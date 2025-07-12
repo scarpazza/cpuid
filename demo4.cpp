@@ -1,6 +1,3 @@
-// demonstrates bit_size_of
-
-
 #include <experimental/meta> // compile-time reflection metafunctions, like members_of()
 #include <algorithm>
 #include <cassert>
@@ -19,13 +16,15 @@ struct field_info {
 };
 
 template<typename S>
-consteval auto get_fields() {
+consteval auto get_fields( const S & )
+// anonymous argument, only used for type deduction!
+{
   constexpr auto ctx    = std::meta::access_context::unchecked();
   constexpr auto N = std::meta::nonstatic_data_members_of( ^^S, ctx ).size(); // OK
-
   std::array< field_info<S>, N > result;
 
   int k = 0;
+  // this can be both a regular for and a template for - they are both guaranteed to executed at compile time
   template for ( constexpr auto f: std::define_static_array(std::meta::nonstatic_data_members_of( ^^S, ctx )) )  {
     assert( std::meta::is_bit_field(f) ); // YES this assertion WILL be checked at compile time!
     result[k++] = field_info<S>{ k,
@@ -40,29 +39,25 @@ consteval auto get_fields() {
 };
 
 template <typename S>
-constexpr auto get_values(const S &s)
+auto get_values(const S &s)
 {
   constexpr auto ctx    = std::meta::access_context::unchecked();
   constexpr auto N = std::meta::nonstatic_data_members_of( ^^S, ctx ).size(); // OK
   std::array< int, N > result;
-
   int k = 0;
-  template for ( constexpr auto f: std::define_static_array(std::meta::nonstatic_data_members_of( ^^S, ctx )) )  {
-    assert( std::meta::is_bit_field(f) ); // YES this assertion WILL be checked at compile time!
+
+  template for ( constexpr auto f: std::define_static_array(std::meta::nonstatic_data_members_of( ^^S, ctx )) )
+    // this is where we systematically apply splicing
     result[k++] = s. [: f :];
-  };
+
   return result;
 }
-
-
 
 
 template <typename S>
 void enumerate_fields( const S & s)
 {
-  constexpr const auto fs = get_fields<S>();
-  constexpr auto ctx    = std::meta::access_context::unchecked();
-
+  constexpr const auto fs = get_fields(s);
   auto values = get_values(s);
 
   assert(values.size() == fs.size() );
