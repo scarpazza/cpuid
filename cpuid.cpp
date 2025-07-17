@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <tuple>
 #include <optional>
+#include <string>
 #include <sys/types.h>
 
 #include "leaf_EAX1.hpp"
@@ -19,13 +20,6 @@
 #include "cpuid.hpp"
 
 
-
-template <typename RS>
-union SchizoReg32 {
-  uint32_t  as_int;
-  RS        as_struct;
-  static_assert (sizeof(RS) == sizeof(uint32_t), "Size of RS should match 32-bit register size (==4 bytes)");
-};
 
 
 const auto query_leaf(const uint32_t leaf,
@@ -47,9 +41,11 @@ const auto query_leaf(const uint32_t leaf,
 
 
 int main() {
+  using namespace cpuid;
 
   // declaring optional as a guarantee I won't use these values before they are initialized
   std::optional<uint32_t> max_leaf;
+  std::optional<uint32_t> max_ext_leaf;
   std::optional<uint32_t> max_leaf7_subleaf;
 
   std::cout << "Leaf 0:" << std::endl;
@@ -57,7 +53,52 @@ int main() {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0);
 
     max_leaf = eax;
-    std::cout << "Max EAX leaf: " << max_leaf.value() << std::endl;;
+    std::cout << "Max EAX leaf: " << max_leaf.value() << std::endl;
+
+    const SchizoReg32< void > r_ebx{ebx};
+    const SchizoReg32< void > r_ecx{ecx};
+    const SchizoReg32< void > r_edx{edx};
+
+    std::string manufacturer =
+      std::string( r_ebx.as_str4, 4) +
+      std::string( r_edx.as_str4, 4) +
+      std::string( r_ecx.as_str4, 4); // yes, it's EBX, EDX and then ECX
+
+    std::cout << "Manufacturer: '" << manufacturer << "'" << std::endl;
+  }
+
+  std::cout << "Extended leaf 0 (0x8000'0000):" << std::endl;
+  {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0000);
+
+    max_ext_leaf = eax;
+    std::cout << "Max EAX extended leaf: 0x" << std::hex << max_ext_leaf.value()
+	      << std::dec
+	      << std::endl;
+  }
+
+  std::cout << "Hypervisor leaf 0 (0x4000'0000):" << std::endl;
+  {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0x4000'0000);
+
+    if ( eax != 0x4000'0000 )
+      {
+        const SchizoReg32< void > r_ebx{ebx};
+	const SchizoReg32< void > r_ecx{ecx};
+	const SchizoReg32< void > r_edx{edx};
+
+	std::string hypervisor =
+	  std::string( r_ebx.as_str4, 4) +
+	  std::string( r_ecx.as_str4, 4) +
+	  std::string( r_edx.as_str4, 4);
+
+	std::cout << "Hypervisor vendor: '" << hypervisor << "'" << std::endl;
+      }
+    else
+      {
+	std::cout << "No hypervisor detected." << std::endl;
+      }
+
   }
 
 
@@ -66,15 +107,10 @@ int main() {
     std::cout << "Leaf 1:" << std::endl;
     const auto [eax, ebx, ecx, edx]  = query_leaf(1);
 
-    const SchizoReg32< cpuid::leaf1::eax_features > r_eax{eax};
-    const SchizoReg32< cpuid::leaf1::ebx_features > r_ebx{ebx};
-    const SchizoReg32< cpuid::leaf1::ecx_features > r_ecx{ecx};
-    const SchizoReg32< cpuid::leaf1::edx_features > r_edx{edx};
-
-    cpuid::enumerate_fields( r_eax.as_struct );
-    cpuid::enumerate_fields( r_ebx.as_struct );
-    cpuid::enumerate_fields( r_ecx.as_struct );
-    cpuid::enumerate_fields( r_edx.as_struct );
+    interpret_fields32<leaf1::eax_features>(eax);
+    interpret_fields32<leaf1::ebx_features>(ebx);
+    interpret_fields32<leaf1::ecx_features>(ecx);
+    interpret_fields32<leaf1::edx_features>(edx);
   }
 
 
@@ -83,33 +119,23 @@ int main() {
     {
       std::cout << "Leaf 7, subleaf 0:" << std::endl;
       const auto [eax, ebx, ecx, edx]  = query_leaf(7,0);
-
       max_leaf7_subleaf = eax;
-
       std::cout << "\tMax leaf-7 ECX sub-leaf: " << max_leaf7_subleaf.value() << std::endl;;
 
-      const SchizoReg32< cpuid::leaf7_subleaf0::ebx_features > r_ebx{ebx};
-      const SchizoReg32< cpuid::leaf7_subleaf0::ecx_features > r_ecx{ecx};
-      const SchizoReg32< cpuid::leaf7_subleaf0::edx_features > r_edx{edx};
-
-      cpuid::enumerate_fields( r_ebx.as_struct );
-      cpuid::enumerate_fields( r_ecx.as_struct );
-      cpuid::enumerate_fields( r_edx.as_struct );
+      interpret_fields32<leaf7_subleaf0::eax_features>(eax);
+      interpret_fields32<leaf7_subleaf0::ebx_features>(ebx);
+      interpret_fields32<leaf7_subleaf0::ecx_features>(ecx);
+      interpret_fields32<leaf7_subleaf0::edx_features>(edx);
     }
 
     if ( 1 <= max_leaf7_subleaf) {
       std::cout << "Leaf 7, subleaf 1:" << std::endl;
       const auto [eax, ebx, ecx, edx]  = query_leaf(7,1);
 
-      const SchizoReg32< cpuid::leaf7_subleaf1::ebx_features > r_eax{eax};
-      const SchizoReg32< cpuid::leaf7_subleaf1::ebx_features > r_ebx{ebx};
-      const SchizoReg32< cpuid::leaf7_subleaf1::ecx_features > r_ecx{ecx};
-      const SchizoReg32< cpuid::leaf7_subleaf1::edx_features > r_edx{edx};
-
-      cpuid::enumerate_fields( r_eax.as_struct );
-      cpuid::enumerate_fields( r_ebx.as_struct );
-      cpuid::enumerate_fields( r_ecx.as_struct );
-      cpuid::enumerate_fields( r_edx.as_struct );
+      interpret_fields32< leaf7_subleaf1::ebx_features >( eax );
+      interpret_fields32< leaf7_subleaf1::ebx_features >( ebx );
+      interpret_fields32< leaf7_subleaf1::ecx_features >( ecx );
+      interpret_fields32< leaf7_subleaf1::edx_features >( edx );
     }
 
   }

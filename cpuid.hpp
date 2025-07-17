@@ -2,7 +2,23 @@
 
 
 #include <cassert>
+
 namespace cpuid {
+
+
+  template <typename RS>
+  union SchizoReg32 {
+    uint32_t  as_int;
+    RS        as_struct;
+    char      as_str4 [4];
+    static_assert (sizeof(RS) == sizeof(uint32_t), "Size of RS should match 32-bit register size (==4 bytes)");
+  };
+
+  template <>
+  union SchizoReg32<void> {
+    uint32_t  as_int;
+    char      as_str4 [4];
+  };
 
 
 
@@ -84,5 +100,17 @@ namespace cpuid {
 		<< "\t =0x" << std::hex << values[i] << std::dec
 		<< std::endl;
   }
+
+
+  template <typename ExplanationStruct>
+  void interpret_fields32( const uint32_t reg_value)
+  {
+    const SchizoReg32< ExplanationStruct > dual_personality{reg_value};
+    static_assert (sizeof(dual_personality) == sizeof(reg_value),
+		   "Size of ExplanationStruct should match 32-bit register");
+    enumerate_fields( dual_personality.as_struct );
+  }
+
+
 
 }; // namespace cpuid
