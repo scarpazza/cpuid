@@ -2,22 +2,26 @@
 //
 //
 
+# pragma once
 
 
-
+#include <sys/types.h>
 namespace cpuid {
 
   namespace leaf1 {
     struct eax_features {
-      uint8_t stepping        : 4;
-      uint8_t model           : 4;
-      uint8_t family          : 4;
-      uint8_t proc_type       : 2;
-      uint8_t reserved_14_15  : 2;
-      uint8_t extended_model  : 4;
-      uint8_t extended_family : 8;
-      //      uint8_t reserved_28_31  : 4; // TO DO UNEXPLAINED SIZE MISMATCH
+      uint32_t stepping        : 4;
+      uint32_t model           : 4;
+      uint32_t family          : 4;
+      uint32_t proc_type       : 2;
+      uint32_t reserved_14_15  : 2;
+      uint32_t extended_model  : 4;
+      uint32_t extended_family : 8;
+      uint32_t reserved_28_31  : 4;
     };
+    static_assert( sizeof(eax_features) == sizeof(uint32_t) );
+    // keep using uint32_t for extended_family; if you declare a uint8 bitfield that happens to have size 8 (bits),
+    // it will be aligned and the struct won't be packed
 
     struct ebx_features {
       uint8_t brand_index      ;
@@ -25,6 +29,8 @@ namespace cpuid {
       uint8_t max_logical_id   ; // maximum number of addressable IDs for logical processors in this physical package - if htt is set
       uint8_t apic_id          ; // local apic id
     };
+    static_assert( sizeof(ebx_features) == sizeof(uint32_t) );
+
     struct ecx_features {
       uint32_t sse3          : 1;  //  0
       uint32_t pclmulqdq     : 1;  //  1
@@ -59,6 +65,7 @@ namespace cpuid {
       uint32_t rdrnd         : 1;  // 30
       uint32_t hypervisor    : 1;  // 31 -- hypervisor present - always zero on physical CPUs
     };
+    static_assert( sizeof(ecx_features) == sizeof(uint32_t) );
 
     struct edx_features {
       uint32_t fpu           : 1;  //  0 Onboard x87 FPU
@@ -94,5 +101,6 @@ namespace cpuid {
       uint32_t ia64          : 1;  // 30 IA64 processor emulating x86[66]
       uint32_t pbe           : 1;  // 31 Pending Break Enable (PBE# pin) wakeup capability
     };
+    static_assert( sizeof(edx_features) == sizeof(uint32_t) );
   } // namespace leaf1
 }; // namespace cpuid

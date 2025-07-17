@@ -10,10 +10,12 @@
 #include <iostream>
 #include <iomanip>
 #include <tuple>
+#include <optional>
 #include <sys/types.h>
 
 #include "leaf_EAX1.hpp"
 #include "leaf_EAX7_ECX0.hpp"
+#include "leaf_EAX7_ECX1.hpp"
 #include "cpuid.hpp"
 
 
@@ -46,8 +48,22 @@ const auto query_leaf(const uint32_t leaf,
 
 int main() {
 
-  std::cout << "Leaf 1:" << std::endl;
+  // declaring optional as a guarantee I won't use these values before they are initialized
+  std::optional<uint32_t> max_leaf;
+  std::optional<uint32_t> max_leaf7_subleaf;
+
+  std::cout << "Leaf 0:" << std::endl;
   {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0);
+
+    max_leaf = eax;
+    std::cout << "Max EAX leaf: " << max_leaf.value() << std::endl;;
+  }
+
+
+  if ( 1 <= max_leaf.value() )
+  {
+    std::cout << "Leaf 1:" << std::endl;
     const auto [eax, ebx, ecx, edx]  = query_leaf(1);
 
     const SchizoReg32< cpuid::leaf1::eax_features > r_eax{eax};
@@ -62,18 +78,41 @@ int main() {
   }
 
 
-  std::cout << "Leaf 7, subleaf 0:" << std::endl;
+  if ( 7 <= max_leaf.value() )
   {
-    const auto [eax, ebx, ecx, edx]  = query_leaf(7,0);
+    {
+      std::cout << "Leaf 7, subleaf 0:" << std::endl;
+      const auto [eax, ebx, ecx, edx]  = query_leaf(7,0);
 
-    const SchizoReg32< cpuid::leaf7_subleaf0::ebx_features > r_ebx{ebx};
-    const SchizoReg32< cpuid::leaf7_subleaf0::ecx_features > r_ecx{ecx};
-    const SchizoReg32< cpuid::leaf7_subleaf0::edx_features > r_edx{edx};
+      max_leaf7_subleaf = eax;
 
-    cpuid::enumerate_fields( r_ebx.as_struct );
-    cpuid::enumerate_fields( r_ecx.as_struct );
-    cpuid::enumerate_fields( r_edx.as_struct );
+      std::cout << "\tMax leaf-7 ECX sub-leaf: " << max_leaf7_subleaf.value() << std::endl;;
+
+      const SchizoReg32< cpuid::leaf7_subleaf0::ebx_features > r_ebx{ebx};
+      const SchizoReg32< cpuid::leaf7_subleaf0::ecx_features > r_ecx{ecx};
+      const SchizoReg32< cpuid::leaf7_subleaf0::edx_features > r_edx{edx};
+
+      cpuid::enumerate_fields( r_ebx.as_struct );
+      cpuid::enumerate_fields( r_ecx.as_struct );
+      cpuid::enumerate_fields( r_edx.as_struct );
+    }
+
+    if ( 1 <= max_leaf7_subleaf) {
+      std::cout << "Leaf 7, subleaf 1:" << std::endl;
+      const auto [eax, ebx, ecx, edx]  = query_leaf(7,1);
+
+      const SchizoReg32< cpuid::leaf7_subleaf1::ebx_features > r_eax{eax};
+      const SchizoReg32< cpuid::leaf7_subleaf1::ebx_features > r_ebx{ebx};
+      const SchizoReg32< cpuid::leaf7_subleaf1::ecx_features > r_ecx{ecx};
+      const SchizoReg32< cpuid::leaf7_subleaf1::edx_features > r_edx{edx};
+
+      cpuid::enumerate_fields( r_eax.as_struct );
+      cpuid::enumerate_fields( r_ebx.as_struct );
+      cpuid::enumerate_fields( r_ecx.as_struct );
+      cpuid::enumerate_fields( r_edx.as_struct );
+    }
+
   }
-  
+
   return 0;
 }

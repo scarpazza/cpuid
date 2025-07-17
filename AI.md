@@ -36,3 +36,13 @@ typedef union {
 ```
 
 which is quite different from correct.
+
+
+The following prompt, which was an attempt to generate `cpuid::leaf7_sublead1`
+
+> Go read the wikipedia page on CPUID leaf 7, subleaf 1, i.e., the meaning of the extended features left in registers
+> after you invoke the CPUID instruction with EAX = 7 and ECX = 1. Then generate a C language struct definition with
+> bitfields corresponding to each field. Generate lower case identifiers. For each field, populate the comment in the
+> same way as the wikipedia CPUID page describes the same field. Do not make mistakes.
+
+... also produced a struct definition matching a majority of fields, but with several inaccuracies.
