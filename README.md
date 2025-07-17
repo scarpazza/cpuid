@@ -1,17 +1,24 @@
-- Latest Reflection paper at the time this project is done: [P2996R12](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2025/p2996r12.html)
+Yet another CPUID tool
+===========================================
 
-- Compiler support: as of July 2024, neither GCC nor clang have support for C++26 reflection yet.
-  This project uses Bloomberg's clang-p2996 branch for testing.
+... but one made to demonstrate exercise C++26 Reflection features.
+
+- The very point of this project is to have a declarative description
+  of the CPUID fields **in one place only**, then use C++ reflection
+  to find the names and position of those fields without help from
+  macro stringification or other hacks.
+
+## References
 
 
-- Test command lines for clang-p2996
-  ```
-   /usr/local/bin/clang++ --gcc-toolchain='~/repos/clang-p2996/build-llvm/lib/clang/21'  -isystem /usr/local/include/c++/v1 -isystem '/usr/local/include/x86_64-unknown-linux-gnu/c++/v1'  -freflection-latest --std=c++26 cpuid.cpp -o cpuid
-  ```
+- The latest paper on C++ Reflection at the time this project was started is:
+  [P2996R12](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2025/p2996r12.html)
+
+- As of July 2025, compiler support for C++26 Reflection is limited to the
+  [clang-p2996](https://github.com/bloomberg/clang-p2996/tree/p2996) by Blooomberg.
+  - To compile this project, you are supposed to roll your own clang-p2996 locally
+  - Makefile contains a hacky set of `CXX` and `CXXFLAGS` that you should
+    adapt to your local clang installation details.
 
 
-- refl1
-  basic example
 
-- refl2
-  static assertion on `is_bit_field`

@@ -33,7 +33,7 @@ namespace cpuid {
     template for (constexpr auto f :
 		    std::define_static_array( std::meta::nonstatic_data_members_of(^^S, ctx)))
       {
-	assert(std::meta::is_bit_field( f )); // this assertion WILL be checked at compile time
+	//assert(std::meta::is_bit_field( f )); // this assertion WILL be checked at compile time
 	result[k++] =
 	  field_info{ std::meta::identifier_of(f),
 		      std::meta::display_string_of(std::meta::type_of(f)),
@@ -44,7 +44,8 @@ namespace cpuid {
     return result;
   };
 
-  template <typename S> auto get_values(const S &s)
+  template <typename S>
+  auto get_values(const S &s)
   {
     constexpr auto ctx = std::meta::access_context::unchecked();
     constexpr auto N =
@@ -52,8 +53,7 @@ namespace cpuid {
     std::array<int, N> result;
     int k = 0;
 
-    template for (constexpr auto f : std::define_static_array(
-							      std::meta::nonstatic_data_members_of(^^S, ctx)))
+    template for (constexpr auto f : std::define_static_array( std::meta::nonstatic_data_members_of(^^S, ctx)) )
       // this is where we systematically apply splicing
       result[k++] = s.[:f:];
 
@@ -63,20 +63,26 @@ namespace cpuid {
   template <typename S>
   void enumerate_fields( const S & s)
   {
-    constexpr const auto fs = get_fields(s);
-    auto values = get_values(s);
+    constexpr auto fs           = get_fields(s);
+    constexpr auto struct_name  = std::meta::display_string_of(^^S);
+    const     auto values       = get_values(s);
 
     assert(values.size() == fs.size() );
 
+    std::cout << "\t" << std::setfill('-') << std::setw(60) << std::left
+	      << struct_name
+	      << std::setw(0) << std::setfill(' ') << "\n";
+
     for ( int i=0; i< fs.size(); i++)
-      std::cout << std::setw(2) 
-		<< " " << std::setw(15) << fs[i].name
+      std::cout << "\t\t"
+		<< std::setw(25) << fs[i].name
 		<< "\t" << fs[i].type_name
 		<< "\t" << (fs[i].bit_field? "bf" : "  ")
 		<< " (" << fs[i].bit_size <<" bits)"
 		<< " @" << fs[i].ofs.bytes * 8 + fs[i].ofs.bits
-		<< " =" << values[i]
-	      << std::endl;
-}
+		<< "\t ="   << values[i]
+		<< "\t =0x" << std::hex << values[i] << std::dec
+		<< std::endl;
+  }
 
 }; // namespace cpuid

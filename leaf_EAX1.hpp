@@ -1,10 +1,30 @@
+// Descriptions of the feature bits and fields returned by CPUID
+//
+//
 
-/* ECX */
+
 
 
 namespace cpuid {
 
   namespace leaf1 {
+    struct eax_features {
+      uint8_t stepping        : 4;
+      uint8_t model           : 4;
+      uint8_t family          : 4;
+      uint8_t proc_type       : 2;
+      uint8_t reserved_14_15  : 2;
+      uint8_t extended_model  : 4;
+      uint8_t extended_family : 8;
+      //      uint8_t reserved_28_31  : 4; // TO DO UNEXPLAINED SIZE MISMATCH
+    };
+
+    struct ebx_features {
+      uint8_t brand_index      ;
+      uint8_t clflush_line     ; // (Value * 8 = cache line size in bytes) -- if CLFLUSH feature flag is set;
+      uint8_t max_logical_id   ; // maximum number of addressable IDs for logical processors in this physical package - if htt is set
+      uint8_t apic_id          ; // local apic id
+    };
     struct ecx_features {
       uint32_t sse3          : 1;  //  0
       uint32_t pclmulqdq     : 1;  //  1
