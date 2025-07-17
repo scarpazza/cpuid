@@ -1,96 +1,58 @@
-
+// Daniele Scarpazza - 2025
+//
+// Free code
+//
+// Code written outside of any affiliation with any employer or organization.
+//
 
 
 #include <experimental/meta> // compile-time reflection metafunctions, like members_of()
 #include <iostream>
 #include <iomanip>
+#include <tuple>
+#include <sys/types.h>
 
-// source https://github.com/gcc-mirror/gcc/blob/master/gcc/config/i386/cpuid.h
-
-#include "CPUID_leaves.hpp"
-
-template <typename T>
-constexpr auto field_count( const T & s)
-{
-  constexpr auto reflT    = ^^ T;
-  constexpr auto ctx      = std::meta::access_context::unchecked();
-  const     auto features = std::meta::members_of( reflT, ctx );
-  return features.size();
-}
-
-/*
-template <typename T>
-constexpr auto field_name( const T & s, const int i)
-{
-  constexpr auto reflT    = ^^ T;
-  constexpr auto ctx      = std::meta::access_context::unchecked();
-  //static constexpr auto features ( );
-
-  //  std::cout << "A" << std::endl;
-
-  return std::meta::identifier_of( std::meta::members_of( reflT, ctx ) [i] );
-}
-*/
-
-template<typename S>
-struct field_info {
-  std::string_view name;
-  /*  std::meta::info  refl;*/
-};
-
-
-template<typename S>
-consteval auto get_fields() {
-  constexpr auto ctx      = std::meta::access_context::unchecked();
-  std::array< field_info<S>,
-	      std::meta::nonstatic_data_members_of( ^^S, ctx ).size()> result;
-  int k = 0;
-  for (auto f: std::meta::nonstatic_data_members_of( ^^S, ctx ) )
-    result[k++] = field_info<S>{ std::meta::identifier_of( f ) /*, f*/};
-  return result;
-}
-
-template <typename S>
-void enumerate_fields( const S & s)
-{
-  constexpr auto fs = get_fields<S>();
-
-  for ( int i=0; i< fs.size(); i++)
-    std::cout << fs[i].name << std::endl;
-  /*
-
-    for ( int i=0; i< fs.size(); i++)
-      std::cout << s. [: fs[i].refl  :] << std::endl;
-      }*/
-
-
-}
+#include "leaf_EAX1.hpp"
+#include "cpuid.hpp"
 
 
 
-template <typename RegStruct>
+template <typename RS>
 union SchizoReg32 {
   uint32_t  as_int;
-  RegStruct as_struct;
+  RS        as_struct;
+  // static assert or constrain so that size is the same
 };
 
-int main() {
 
-  uint32_t eax, ebx, edx;
-  eax = 1;
-
-  SchizoReg32<CPUID_ecx_features> ecx;
-
+const auto query_leaf(const uint32_t leaf) {
+  uint32_t eax = leaf, ebx, ecx, edx;
   __asm__ volatile("cpuid"
-		   : "+a"(eax), "=b"(ebx), "=c"(ecx.as_int), "=d"(edx)  // out
+		   : "+a"(eax), "=b"(ebx), "=c"(ecx), "=d"(edx)  // out
 		     // the "a","b","c","d", modifiers come from x86 family-config/i386/constraints.md
 		   : // input - nothing more than eax. already listed
 		   : // clobbers - nothing more than those already listed
 		   );
+  return std::make_tuple( eax, ebx, ecx, edx );
+}
 
-  std::cout << "Max eax=" << eax << std::endl;
 
-  enumerate_fields( ecx.as_struct );
+
+
+int main() {
+
+  //std::cout << "Max eax=" << eax << std::endl;
+
+  std::cout << "Leaf 1:" << std::endl;
+  {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(1);
+
+    const SchizoReg32< cpuid::leaf1::ecx_features > r_ecx{ecx};
+    const SchizoReg32< cpuid::leaf1::edx_features > r_edx{edx};
+
+    cpuid::enumerate_fields( r_ecx.as_struct );
+    cpuid::enumerate_fields( r_edx.as_struct );
+  }
 
   return 0;
 }

@@ -5,21 +5,19 @@ CXXFLAGS=--gcc-toolchain='~/repos/clang-p2996/build-llvm/lib/clang/21'  -isystem
 LDFLAGS=-Wl,-rpath,/home/scarpaz/repos/clang-p2996/build-llvm/lib/x86_64-unknown-linux-gnu
 
 
-#all: demo0.exe demo4.exe demo3.exe demo2.exe demo1.exe
+HEADERS := $(wildcard *.hpp)
 
-all: demo4.exe
+all: cpuid.exe
 
 %.exe: %.o
 	$(CXX) $(LDFLAGS) -lc++ $< -o $@
+	./$@
 
-#all: cpuid
-#	./cpuid
-
-cpuid: cpuid.o
+cpuid: cpuid.o $(HEADERS)
 	$(CXX) $(LDFLAGS) -lc++ $< -o $@
 
 %.o: %.cpp leaf_EAX1.hpp
 	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f cpuid *.o
+	rm -f cpuid *.o *~
