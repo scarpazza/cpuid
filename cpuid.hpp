@@ -1,0 +1,82 @@
+#pragma once
+
+
+#include <cassert>
+namespace cpuid {
+
+
+
+  struct field_info {
+    std::string_view name;
+    std::string_view type_name;
+    bool bit_field;
+    size_t bit_size;
+    std::meta::member_offset ofs;
+  };
+
+  /* takes a struct or a class and populates an array of
+     field_info describing its fields
+   */
+
+  template <typename S>
+  consteval auto get_fields(const S &)
+  // anonymous argument is used only for type deduction
+  {
+    constexpr auto ctx = std::meta::access_context::unchecked();
+    constexpr auto N =
+      std::meta::nonstatic_data_members_of(^^S, ctx).size(); // OK
+    std::array<field_info, N> result;
+
+    int k = 0;
+    // this can be both a regular for and a template for - they are both
+    // guaranteed to executed at compile time
+    template for (constexpr auto f :
+		    std::define_static_array( std::meta::nonstatic_data_members_of(^^S, ctx)))
+      {
+	assert(std::meta::is_bit_field( f )); // this assertion WILL be checked at compile time
+	result[k++] =
+	  field_info{ std::meta::identifier_of(f),
+		      std::meta::display_string_of(std::meta::type_of(f)),
+		      std::meta::is_bit_field(f),
+		      std::meta::bit_size_of(f),
+		      std::meta::offset_of(f) };
+      }
+    return result;
+  };
+
+  template <typename S> auto get_values(const S &s)
+  {
+    constexpr auto ctx = std::meta::access_context::unchecked();
+    constexpr auto N =
+      std::meta::nonstatic_data_members_of(^^S, ctx).size(); // OK
+    std::array<int, N> result;
+    int k = 0;
+
+    template for (constexpr auto f : std::define_static_array(
+							      std::meta::nonstatic_data_members_of(^^S, ctx)))
+      // this is where we systematically apply splicing
+      result[k++] = s.[:f:];
+
+    return result;
+  }
+
+  template <typename S>
+  void enumerate_fields( const S & s)
+  {
+    constexpr const auto fs = get_fields(s);
+    auto values = get_values(s);
+
+    assert(values.size() == fs.size() );
+
+    for ( int i=0; i< fs.size(); i++)
+      std::cout << std::setw(2) 
+		<< " " << std::setw(15) << fs[i].name
+		<< "\t" << fs[i].type_name
+		<< "\t" << (fs[i].bit_field? "bf" : "  ")
+		<< " (" << fs[i].bit_size <<" bits)"
+		<< " @" << fs[i].ofs.bytes * 8 + fs[i].ofs.bits
+		<< " =" << values[i]
+	      << std::endl;
+}
+
+}; // namespace cpuid
