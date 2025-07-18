@@ -3,7 +3,7 @@ Max EAX leaf: 22
 Manufacturer: 'GenuineIntel'
 Extended leaf 0 (EAX = 0x8000'0000):
 Max EAX extended leaf: 0x80000008
-Hypervisor Leaf 0 (0x4000'0000):
+Hypervisor Leaf 0 (EAX = 0x4000'0000):
 	Hypervisor vendor: 'Microsoft Hv'
 Leaf 1:
 	eax_features------------------------------------------------
@@ -19,7 +19,7 @@ Leaf 1:
 		brand_index              	unsigned char	   (8 bits) @0	 =0	 =0x0
 		clflush_line             	unsigned char	   (8 bits) @8	 =8	 =0x8
 		max_logical_id           	unsigned char	   (8 bits) @16	 =8	 =0x8
-		apic_id                  	unsigned char	   (8 bits) @24	 =1	 =0x1
+		apic_id                  	unsigned char	   (8 bits) @24	 =3	 =0x3
 	ecx_features------------------------------------------------
 		sse3                     	unsigned int	bf (1 bit ) @0	 =1	 =0x1
 		pclmulqdq                	unsigned int	bf (1 bit ) @1	 =1	 =0x1
@@ -87,39 +87,6 @@ Leaf 1:
 		ia64                     	unsigned int	bf (1 bit ) @30	 =0	 =0x0
 		pbe                      	unsigned int	bf (1 bit ) @31	 =0	 =0x0
 Extended leaf 1 (EAX = 0x8000'0001):
-	edx_features------------------------------------------------
-		fpu_amd                  	unsigned int	bf (1 bit ) @0	 =0	 =0x0
-		vme_amd                  	unsigned int	bf (1 bit ) @1	 =0	 =0x0
-		de_amd                   	unsigned int	bf (1 bit ) @2	 =0	 =0x0
-		pse_amd                  	unsigned int	bf (1 bit ) @3	 =0	 =0x0
-		tsc_amd                  	unsigned int	bf (1 bit ) @4	 =0	 =0x0
-		msr_amd                  	unsigned int	bf (1 bit ) @5	 =0	 =0x0
-		pae_amd                  	unsigned int	bf (1 bit ) @6	 =0	 =0x0
-		mce_amd                  	unsigned int	bf (1 bit ) @7	 =0	 =0x0
-		cx8_amd                  	unsigned int	bf (1 bit ) @8	 =0	 =0x0
-		apic_amd                 	unsigned int	bf (1 bit ) @9	 =0	 =0x0
-		syscall_k6               	unsigned int	bf (1 bit ) @10	 =0	 =0x0
-		syscall                  	unsigned int	bf (1 bit ) @11	 =1	 =0x1
-		mtrr_amd                 	unsigned int	bf (1 bit ) @12	 =0	 =0x0
-		pge_amd                  	unsigned int	bf (1 bit ) @13	 =0	 =0x0
-		mca_amd                  	unsigned int	bf (1 bit ) @14	 =0	 =0x0
-		cmov_amd                 	unsigned int	bf (1 bit ) @15	 =0	 =0x0
-		pat_amd                  	unsigned int	bf (1 bit ) @16	 =0	 =0x0
-		pse36_amd                	unsigned int	bf (1 bit ) @17	 =0	 =0x0
-		reserved_18              	unsigned int	bf (1 bit ) @18	 =0	 =0x0
-		exx                      	unsigned int	bf (1 bit ) @19	 =0	 =0x0
-		nx                       	unsigned int	bf (1 bit ) @20	 =1	 =0x1
-		reserved_21              	unsigned int	bf (1 bit ) @21	 =0	 =0x0
-		mmx_ext                  	unsigned int	bf (1 bit ) @22	 =0	 =0x0
-		mmx_amd                  	unsigned int	bf (1 bit ) @23	 =0	 =0x0
-		fxsr_amd                 	unsigned int	bf (1 bit ) @24	 =0	 =0x0
-		fxsr_opt                 	unsigned int	bf (1 bit ) @25	 =0	 =0x0
-		pdpe1gb                  	unsigned int	bf (1 bit ) @26	 =1	 =0x1
-		rdtscp                   	unsigned int	bf (1 bit ) @27	 =1	 =0x1
-		reserved_28              	unsigned int	bf (1 bit ) @28	 =0	 =0x0
-		lm                       	unsigned int	bf (1 bit ) @29	 =1	 =0x1
-		has_3dnow_ext            	unsigned int	bf (1 bit ) @30	 =0	 =0x0
-		has_3dnow                	unsigned int	bf (1 bit ) @31	 =0	 =0x0
 	ecx_features------------------------------------------------
 		lahf_lm                  	unsigned int	bf (1 bit ) @0	 =1	 =0x1
 		cmp_legacy               	unsigned int	bf (1 bit ) @1	 =0	 =0x0
@@ -153,6 +120,39 @@ Extended leaf 1 (EAX = 0x8000'0001):
 		monitorx                 	unsigned int	bf (1 bit ) @29	 =0	 =0x0
 		addr_mask_ext            	unsigned int	bf (1 bit ) @30	 =0	 =0x0
 		reserved_31              	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+	edx_features------------------------------------------------
+		fpu_amd                  	unsigned int	bf (1 bit ) @0	 =0	 =0x0
+		vme_amd                  	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		de_amd                   	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		pse_amd                  	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		tsc_amd                  	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		msr_amd                  	unsigned int	bf (1 bit ) @5	 =0	 =0x0
+		pae_amd                  	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		mce_amd                  	unsigned int	bf (1 bit ) @7	 =0	 =0x0
+		cx8_amd                  	unsigned int	bf (1 bit ) @8	 =0	 =0x0
+		apic_amd                 	unsigned int	bf (1 bit ) @9	 =0	 =0x0
+		syscall_k6               	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		syscall                  	unsigned int	bf (1 bit ) @11	 =1	 =0x1
+		mtrr_amd                 	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		pge_amd                  	unsigned int	bf (1 bit ) @13	 =0	 =0x0
+		mca_amd                  	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		cmov_amd                 	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		pat_amd                  	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		pse36_amd                	unsigned int	bf (1 bit ) @17	 =0	 =0x0
+		reserved_18              	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		exx                      	unsigned int	bf (1 bit ) @19	 =0	 =0x0
+		nx                       	unsigned int	bf (1 bit ) @20	 =1	 =0x1
+		reserved_21              	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		mmx_ext                  	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		mmx_amd                  	unsigned int	bf (1 bit ) @23	 =0	 =0x0
+		fxsr_amd                 	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		fxsr_opt                 	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		pdpe1gb                  	unsigned int	bf (1 bit ) @26	 =1	 =0x1
+		rdtscp                   	unsigned int	bf (1 bit ) @27	 =1	 =0x1
+		reserved_28              	unsigned int	bf (1 bit ) @28	 =0	 =0x0
+		lm                       	unsigned int	bf (1 bit ) @29	 =1	 =0x1
+		has_3dnow_ext            	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		has_3dnow                	unsigned int	bf (1 bit ) @31	 =0	 =0x0
 Extended leaves 2,3,4 (EAX = 0x8000'0002...4):
 	Processor Brand string: 'Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz'
 Extended leaf 5 (EAX = 0x8000'0005): L1 cache and TLB identifiers:
@@ -176,6 +176,7 @@ Extended leaf 5 (EAX = 0x8000'0005): L1 cache and TLB identifiers:
 		L1I_lines_per_tag        	unsigned char	   (8 bits) @8	 =0	 =0x0
 		L1I_associativity        	unsigned char	   (8 bits) @16	 =0	 =0x0
 		L1I_cache_size_kb        	unsigned char	   (8 bits) @24	 =0	 =0x0
+Leaf 7:
 Leaf 7, subleaf 0:
 	Max leaf-7 ECX sub-leaf: 0
 	eax_features------------------------------------------------
@@ -272,3 +273,7 @@ Leaf 7, subleaf 0:
 		ia32_arch_capabilities_msr	unsigned int	bf (1 bit ) @27	 =1	 =0x1
 		ia32_core_capabilities_msr	unsigned int	bf (1 bit ) @28	 =1	 =0x1
 		ssbd                     	unsigned int	bf (1 bit ) @29	 =1	 =0x1
+Leaf 7, subleaf 1:
+	 N/A.
+Leaf 7, subleaf 2:
+	 N/A.

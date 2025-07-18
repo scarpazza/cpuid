@@ -34,22 +34,14 @@
 #include <string>
 #include <sys/types.h>
 
-#include "leaf_EAX1.hpp"
-#include "leaf_EAX8000'0001.hpp"
-#include "leaf_EAX8000'0005.hpp"
-#include "leaf_EAX7_ECX0.hpp"
-#include "leaf_EAX7_ECX1.hpp"
-
 #include "cpuid.hpp"
-
+#include "include/leaf_EAX7_ECX2.hpp"
+#include "leaves.hpp"
 
 
 const auto query_leaf(const uint32_t leaf,
 		      const uint32_t subleaf=0) {
-  uint32_t eax = leaf,
-    ebx,
-    ecx = subleaf,
-    edx;
+  uint32_t eax = leaf, ebx, ecx = subleaf, edx;
   __asm__ volatile("cpuid"
 		   : "+a"(eax), "=b"(ebx), "+c"(ecx), "=d"(edx)  // out
 		     // the "a","b","c","d", modifiers come from x86 family-config/i386/constraints.md
@@ -58,8 +50,6 @@ const auto query_leaf(const uint32_t leaf,
 		   );
   return std::make_tuple( eax, ebx, ecx, edx );
 }
-
-
 
 
 int main() {
@@ -90,17 +80,16 @@ int main() {
 	      << std::dec << std::endl;
   }
 
-
-  std::cout << "Hypervisor Leaf 0 (0x4000'0000):" << std::endl;
+  std::cout << "Hypervisor Leaf 0 (EAX = 0x4000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x4000'0000);
 
     if ( eax != 0x4000'0000 ) {
       const auto hypervisor = regs_to_string( ebx, ecx, edx );
-      std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
+      std::cout << "\t Hypervisor vendor: '" << hypervisor << "'" << std::endl;
     }
     else
-      std::cout << "\tNo hypervisor detected." << std::endl;
+      std::cout << "\t No hypervisor detected." << std::endl;
   }
 
 
@@ -117,8 +106,8 @@ int main() {
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0001);
 
-    interpret_fields32<leaf80000001::edx_features>(edx);
     interpret_fields32<leaf80000001::ecx_features>(ecx);
+    interpret_fields32<leaf80000001::edx_features>(edx);
   } else
     std::cout << "\t N/A.\n";
 
@@ -154,6 +143,7 @@ int main() {
     std::cout << "\t N/A.\n";
 
 
+  std::cout << "Leaf 7:\n";
   if ( 7 <= max_leaf.value() )
   {
     {
@@ -165,14 +155,23 @@ int main() {
       interpret_fields32_abcd< leaf7_subleaf0 >( eax, ebx, ecx, edx );
     }
 
+    std::cout << "Leaf 7, subleaf 1:" << std::endl;
     if ( 1 <= max_leaf7_subleaf) {
-      std::cout << "Leaf 7, subleaf 1:" << std::endl;
       const auto [eax, ebx, ecx, edx]  = query_leaf(7,1);
 
       interpret_fields32_abcd< leaf7_subleaf1 >( eax, ebx, ecx, edx );
-    }
+    }else
+      std::cout << "\t N/A.\n";
 
+    std::cout << "Leaf 7, subleaf 2:" << std::endl;
+    if ( 2 <= max_leaf7_subleaf) {
+      const auto [eax, ebx, ecx, edx]  = query_leaf(7,2);
+      interpret_fields32<cpuid::leaf7_subleaf2::edx_features>(edx);
+    } else
+      std::cout << "\t N/A.\n";
   }
+  else
+    std::cout << "\t N/A.\n";
 
   return 0;
 }
