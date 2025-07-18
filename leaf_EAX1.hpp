@@ -8,7 +8,7 @@
 #include <sys/types.h>
 namespace cpuid {
 
-  namespace leaf1 {
+  struct leaf1 {
     struct eax_features {
       uint32_t stepping        : 4;
       uint32_t model           : 4;
@@ -102,5 +102,5 @@ namespace cpuid {
       uint32_t pbe           : 1;  // 31 Pending Break Enable (PBE# pin) wakeup capability
     };
     static_assert( sizeof(edx_features) == sizeof(uint32_t) );
-  } // namespace leaf1
+  }; // struct leaf1
 }; // namespace cpuid

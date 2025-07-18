@@ -6,7 +6,7 @@
 #include <sys/types.h>
 namespace cpuid {
 
-  namespace leaf7_subleaf1 {
+  struct leaf7_subleaf1 {
     struct eax_features {
       uint32_t sha512                        : 1;  // bit 0: sha‑512 extensions
       uint32_t sm3                           : 1;  // bit 1: sm3 hash extensions
@@ -48,5 +48,10 @@ namespace cpuid {
       uint32_t placeholder;
     };
 
-  } // namespace leaf7_subleaf1
+    static_assert( sizeof(eax_features) == sizeof(uint32_t) );
+    static_assert( sizeof(ebx_features) == sizeof(uint32_t) );
+    static_assert( sizeof(ecx_features) == sizeof(uint32_t) );
+    static_assert( sizeof(edx_features) == sizeof(uint32_t) );
+
+  }; // struct leaf7_subleaf1
 }; // namespace cpuid

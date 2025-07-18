@@ -127,5 +127,25 @@ namespace cpuid {
   }
 
 
+  template <typename ExplanationLeaf>
+  void interpret_fields32_abcd( const uint32_t eax,
+				const uint32_t ebx,
+				const uint32_t ecx,
+				const uint32_t edx)
+  {
+    const SchizoReg32< typename ExplanationLeaf ::eax_features > dual_eax{eax};
+    const SchizoReg32< typename ExplanationLeaf ::ebx_features > dual_ebx{ebx};
+    const SchizoReg32< typename ExplanationLeaf ::ecx_features > dual_ecx{ecx};
+    const SchizoReg32< typename ExplanationLeaf ::edx_features > dual_edx{edx};
+
+    enumerate_fields( dual_eax.as_struct );
+    enumerate_fields( dual_ebx.as_struct );
+    enumerate_fields( dual_ecx.as_struct );
+    enumerate_fields( dual_edx.as_struct );
+  }
+
+
+
+
 
 }; // namespace cpuid

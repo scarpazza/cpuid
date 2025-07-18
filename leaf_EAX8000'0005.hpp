@@ -7,7 +7,7 @@
 #include <sys/types.h>
 namespace cpuid {
 
-  namespace leaf80000005 {
+  struct leaf80000005 {
 
     struct eax_features {
       uint8_t L1_huge_TLB_instr_entries;
@@ -41,5 +41,5 @@ namespace cpuid {
     };
     static_assert( sizeof(edx_features) == sizeof(uint32_t) );
 
-  } // namespace leaf80000005
+  }; // struct leaf80000005
 }; // namespace cpuid

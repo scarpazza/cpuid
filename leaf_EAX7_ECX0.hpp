@@ -7,10 +7,12 @@
 #include <sys/types.h>
 namespace cpuid {
 
-  namespace leaf7_subleaf0 {
+  struct leaf7_subleaf0 {
     struct eax_features {
       u_int32_t max_subleaf;
     };
+
+   
     struct ebx_features {
       uint32_t fsgsbase            :1; // Access to base of %fs and %gs
       uint32_t ia32_tsc_adjust_msr :1; // IA32_TSC_ADJUST MSR
@@ -109,7 +111,12 @@ namespace cpuid {
       uint32_t ia32_arch_capabilities_msr : 1; // bit 29: IA32_ARCH_CAPABILITIES MSR (lists speculative side channel mitigations)
       uint32_t ia32_core_capabilities_msr : 1; // bit 30: IA32_CORE_CAPABILITIES MSR (lists model-specific core capabilities)
       uint32_t ssbd                       : 1; // bit 31: speculative store bypass Disable, as mitigation for Speculative Store Bypass (IA32_SPEC_CTRL)
-
     };
-  } // namespace leaf1
+
+    static_assert( sizeof(eax_features) == sizeof(uint32_t) );
+    static_assert( sizeof(ebx_features) == sizeof(uint32_t) );
+    static_assert( sizeof(ecx_features) == sizeof(uint32_t) );
+    static_assert( sizeof(edx_features) == sizeof(uint32_t) );
+
+  }; // struct leaf7_subleaf0
 }; // namespace cpuid

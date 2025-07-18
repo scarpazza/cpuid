@@ -89,10 +89,7 @@ int main() {
     std::cout << "Leaf 1:" << std::endl;
     const auto [eax, ebx, ecx, edx]  = query_leaf(1);
 
-    interpret_fields32<leaf1::eax_features>(eax);
-    interpret_fields32<leaf1::ebx_features>(ebx);
-    interpret_fields32<leaf1::ecx_features>(ecx);
-    interpret_fields32<leaf1::edx_features>(edx);
+    interpret_fields32_abcd< leaf1 >( eax, ebx, ecx, edx );
   }
 
   std::cout << "Extended leaf 1 (EAX = 0x8000'0001):" << std::endl;
@@ -132,15 +129,9 @@ int main() {
   if (0x8000'0005 <= max_ext_leaf)
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0005);
-
-    interpret_fields32<leaf80000005::eax_features>(eax);
-    interpret_fields32<leaf80000005::ebx_features>(ebx);
-    interpret_fields32<leaf80000005::ecx_features>(ecx);
-    interpret_fields32<leaf80000005::edx_features>(edx);
-
+    interpret_fields32_abcd< leaf80000005 >( eax, ebx, ecx, edx );
   } else
     std::cout << "\t N/A.\n";
-
 
 
   if ( 7 <= max_leaf.value() )
@@ -151,20 +142,14 @@ int main() {
       max_leaf7_subleaf = eax;
       std::cout << "\tMax leaf-7 ECX sub-leaf: " << max_leaf7_subleaf.value() << std::endl;;
 
-      interpret_fields32<leaf7_subleaf0::eax_features>(eax);
-      interpret_fields32<leaf7_subleaf0::ebx_features>(ebx);
-      interpret_fields32<leaf7_subleaf0::ecx_features>(ecx);
-      interpret_fields32<leaf7_subleaf0::edx_features>(edx);
+      interpret_fields32_abcd< leaf7_subleaf0 >( eax, ebx, ecx, edx );
     }
 
     if ( 1 <= max_leaf7_subleaf) {
       std::cout << "Leaf 7, subleaf 1:" << std::endl;
       const auto [eax, ebx, ecx, edx]  = query_leaf(7,1);
 
-      interpret_fields32< leaf7_subleaf1::ebx_features >( eax );
-      interpret_fields32< leaf7_subleaf1::ebx_features >( ebx );
-      interpret_fields32< leaf7_subleaf1::ecx_features >( ecx );
-      interpret_fields32< leaf7_subleaf1::edx_features >( edx );
+      interpret_fields32_abcd< leaf7_subleaf1 >( eax, ebx, ecx, edx );
     }
 
   }
