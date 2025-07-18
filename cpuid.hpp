@@ -94,8 +94,9 @@ namespace cpuid {
 		<< std::setw(25) << fs[i].name
 		<< "\t" << fs[i].type_name
 		<< "\t" << (fs[i].bit_field? "bf" : "  ")
-		<< " (" << fs[i].bit_size <<" bits)"
-		<< " @" << fs[i].ofs.bytes * 8 + fs[i].ofs.bits
+		<< " (" << fs[i].bit_size <<" bit"
+		<< (fs[i].bit_size==1 ? " ":"s")
+		<< ") @" << fs[i].ofs.bytes * 8 + fs[i].ofs.bits
 		<< "\t ="   << values[i]
 		<< "\t =0x" << std::hex << values[i] << std::dec
 		<< std::endl;

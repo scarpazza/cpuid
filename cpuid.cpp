@@ -15,8 +15,10 @@
 #include <sys/types.h>
 
 #include "leaf_EAX1.hpp"
+#include "leaf_EAX8000'0001.hpp"
 #include "leaf_EAX7_ECX0.hpp"
 #include "leaf_EAX7_ECX1.hpp"
+
 #include "cpuid.hpp"
 
 
@@ -67,7 +69,7 @@ int main() {
     std::cout << "Manufacturer: '" << manufacturer << "'" << std::endl;
   }
 
-  std::cout << "Extended leaf 0 (0x8000'0000):" << std::endl;
+  std::cout << "Extended leaf 0 (EAX = 0x8000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0000);
 
@@ -77,7 +79,8 @@ int main() {
 	      << std::endl;
   }
 
-  std::cout << "Hypervisor leaf 0 (0x4000'0000):" << std::endl;
+
+  std::cout << "Hypervisor Leaf 0 (0x4000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x4000'0000);
 
@@ -92,11 +95,11 @@ int main() {
 	  std::string( r_ecx.as_str4, 4) +
 	  std::string( r_edx.as_str4, 4);
 
-	std::cout << "Hypervisor vendor: '" << hypervisor << "'" << std::endl;
+	std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
       }
     else
       {
-	std::cout << "No hypervisor detected." << std::endl;
+	std::cout << "\tNo hypervisor detected." << std::endl;
       }
 
   }
@@ -112,6 +115,16 @@ int main() {
     interpret_fields32<leaf1::ecx_features>(ecx);
     interpret_fields32<leaf1::edx_features>(edx);
   }
+
+  std::cout << "Extended leaf 1 (EAX = 0x8000'0001):" << std::endl;
+  if ( 0x8000'0001 <= max_ext_leaf.value() )
+  {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0001);
+
+    interpret_fields32<leaf80000001::edx_features>(edx);
+    interpret_fields32<leaf80000001::ecx_features>(ecx);
+  } else
+    std::cout << "\t N/A.\n";
 
 
   if ( 7 <= max_leaf.value() )
