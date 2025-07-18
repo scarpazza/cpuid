@@ -4,7 +4,7 @@ Manufacturer: 'GenuineIntel'
 Extended leaf 0 (EAX = 0x8000'0000):
 Max EAX extended leaf: 0x80000008
 Hypervisor Leaf 0 (EAX = 0x4000'0000):
-	Hypervisor vendor: 'Microsoft Hv'
+	 Hypervisor vendor: 'Microsoft Hv'
 Leaf 1:
 	eax_features------------------------------------------------
 		stepping                 	unsigned int	bf (4 bits) @0	 =13	 =0xd
@@ -19,7 +19,7 @@ Leaf 1:
 		brand_index              	unsigned char	   (8 bits) @0	 =0	 =0x0
 		clflush_line             	unsigned char	   (8 bits) @8	 =8	 =0x8
 		max_logical_id           	unsigned char	   (8 bits) @16	 =8	 =0x8
-		apic_id                  	unsigned char	   (8 bits) @24	 =3	 =0x3
+		apic_id                  	unsigned char	   (8 bits) @24	 =6	 =0x6
 	ecx_features------------------------------------------------
 		sse3                     	unsigned int	bf (1 bit ) @0	 =1	 =0x1
 		pclmulqdq                	unsigned int	bf (1 bit ) @1	 =1	 =0x1
