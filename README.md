@@ -1,4 +1,4 @@
-![Test Image 4](silly-image.jpg)
+![Test Image 4](silly-image.jpg = 500px)
 
 Yet another CPUID tool
 ===========================================
