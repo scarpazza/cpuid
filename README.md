@@ -1,3 +1,5 @@
+![Test Image 4](silly-image.jpg)
+
 Yet another CPUID tool
 ===========================================
 
