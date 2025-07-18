@@ -30,7 +30,7 @@ namespace cpuid {
 
 
   template<typename... Args>
-  //requires std::are_same_v<Args...>  // TO DO: Concept
+  //requires std::are_same_v<Args...>  // TO DO: Concept - unfinished
   auto regs_to_string(const Args&... args) {
     return (... + reg_to_string(args) );
   }

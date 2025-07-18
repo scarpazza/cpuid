@@ -16,6 +16,7 @@
 
 #include "leaf_EAX1.hpp"
 #include "leaf_EAX8000'0001.hpp"
+#include "leaf_EAX8000'0005.hpp"
 #include "leaf_EAX7_ECX0.hpp"
 #include "leaf_EAX7_ECX1.hpp"
 
@@ -124,6 +125,19 @@ int main() {
       brand_string.resize(nul_idx);
 
     std::cout << "\tProcessor Brand string: '" << brand_string << "'" << std::endl;
+  } else
+    std::cout << "\t N/A.\n";
+
+  std::cout << "Extended leaf 5 (EAX = 0x8000'0005): L1 cache and TLB identifiers:" << std::endl;
+  if (0x8000'0005 <= max_ext_leaf)
+  {
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0005);
+
+    interpret_fields32<leaf80000005::eax_features>(eax);
+    interpret_fields32<leaf80000005::ebx_features>(ebx);
+    interpret_fields32<leaf80000005::ecx_features>(ecx);
+    interpret_fields32<leaf80000005::edx_features>(edx);
+
   } else
     std::cout << "\t N/A.\n";
 
