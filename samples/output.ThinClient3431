@@ -19,7 +19,7 @@ Leaf 1:
 		brand_index              	unsigned char	   (8 bits) @0	 =0	 =0x0
 		clflush_line             	unsigned char	   (8 bits) @8	 =8	 =0x8
 		max_logical_id           	unsigned char	   (8 bits) @16	 =8	 =0x8
-		apic_id                  	unsigned char	   (8 bits) @24	 =6	 =0x6
+		apic_id                  	unsigned char	   (8 bits) @24	 =4	 =0x4
 	ecx_features------------------------------------------------
 		sse3                     	unsigned int	bf (1 bit ) @0	 =1	 =0x1
 		pclmulqdq                	unsigned int	bf (1 bit ) @1	 =1	 =0x1
@@ -277,3 +277,5 @@ Leaf 7, subleaf 1:
 	 N/A.
 Leaf 7, subleaf 2:
 	 N/A.
+Xeon Phi Function (Leaf 0x2000'0000):
+eax=0

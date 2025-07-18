@@ -173,5 +173,15 @@ int main() {
   else
     std::cout << "\t N/A.\n";
 
+  {
+    std::cout << "Xeon Phi Function (Leaf 0x2000'0000):\n";
+    const auto [eax, ebx, ecx, edx]  = query_leaf(0x2000'0000);
+    if ( eax == 0 )
+      std::cout << "\t N/A.\n";
+    else
+      std::cout << "Max Xeon Phi Function: " << eax << "\n";
+  }
+
+
   return 0;
 }
