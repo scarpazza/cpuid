@@ -84,12 +84,12 @@ int main() {
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x4000'0000);
 
-    if ( eax != 0x4000'0000 ) {
+    if ( eax != 0 ) {
       const auto hypervisor = regs_to_string( ebx, ecx, edx );
       std::cout << "\t Hypervisor vendor: '" << hypervisor << "'" << std::endl;
     }
     else
-      std::cout << "\t No hypervisor detected." << std::endl;
+      std::cout << "\t No hypervisor." << std::endl;
   }
 
 

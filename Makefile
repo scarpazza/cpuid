@@ -22,11 +22,11 @@ cpuid: cpuid.o
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $<
 
-samples: cpuid.exe samples/output.$(shell hostname)
+samples: cpuid.exe sample-output/output.$(shell hostname)
 
-samples/output.$(shell hostname): cpuid.exe
-	./$<  >  samples/output.$(shell hostname)
-	cat samples/output.$(shell hostname)
+sample-output/output.$(shell hostname): cpuid.exe
+	./$<  >  $@
+	cat $@
 
 clean:
 	rm -f cpuid.exe *.o *~

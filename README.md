@@ -10,8 +10,8 @@ Yet another CPUID tool
 
 - As of July 2025, compiler support for C++26 Reflection is limited to the
   [clang-p2996](https://github.com/bloomberg/clang-p2996/tree/p2996) by Blooomberg.
-  - To compile this project, you have to roll your own clang-p2996 build locally;
-  - Makefile contains a hacky set of `CXX` and `CXXFLAGS` that work on my installation
+  - To compile this project, you have to roll your own clang-p2996 build locally
+  - `Makefile` contains a hacky set of `CXX` and `CXXFLAGS` that work on my installation
   - **MAKE SURE YOU ADAPT** `CXX` and `CXXFLAGS` to your local clang installation details.
 
 
