@@ -21,23 +21,7 @@
 
 #include "cpuid.hpp"
 
-/* Interpret a 32-bit register as a 4-byte string,
-   as in the manufacturer string or processor brand string
- */
-std::string reg_to_string(const u_int32_t reg) {
-  const  cpuid::SchizoReg32< void > dual_personality{reg};
-  return std::string( dual_personality.as_str4, 4);
-}
 
-/*
-template<typename... Args>
-requires std::are_same_v<Args...>  // Concept
-Add(const Args&... args) noexcept
-{
-
-    return (... + args);
-}
-*/
 
 const auto query_leaf(const uint32_t leaf,
 		      const uint32_t subleaf=0) {
@@ -71,7 +55,7 @@ int main() {
 
     max_leaf = eax;
     std::cout << "Max EAX leaf: " << max_leaf.value() << std::endl;
-    const std::string manufacturer = reg_to_string( ebx ) + reg_to_string( edx ) + reg_to_string( ecx );
+    const auto manufacturer = regs_to_string( ebx, edx, ecx );
     // yes, it's EBX, EDX and then ECX
 
     std::cout << "Manufacturer: '" << manufacturer << "'" << std::endl;
@@ -80,7 +64,6 @@ int main() {
   std::cout << "Extended leaf 0 (EAX = 0x8000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0000);
-
     max_ext_leaf = eax;
     std::cout << "Max EAX extended leaf: 0x" << std::hex << max_ext_leaf.value()
 	      << std::dec << std::endl;
@@ -91,11 +74,10 @@ int main() {
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x4000'0000);
 
-    if ( eax != 0x4000'0000 )
-      {
-	const auto hypervisor = reg_to_string( ebx ) + reg_to_string( ecx ) + reg_to_string( edx );
-	std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
-      }
+    if ( eax != 0x4000'0000 ) {
+      const auto hypervisor = regs_to_string( ebx, ecx, edx );
+      std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
+    }
     else
       std::cout << "\tNo hypervisor detected." << std::endl;
   }
@@ -130,10 +112,9 @@ int main() {
     const auto [eax3, ebx3, ecx3, edx3]  = query_leaf(0x8000'0003);
     const auto [eax4, ebx4, ecx4, edx4]  = query_leaf(0x8000'0004);
 
-    std::string brand_string =
-      reg_to_string( eax2 ) + reg_to_string( ebx2 ) + reg_to_string( ecx2 ) + reg_to_string( edx2 ) +
-      reg_to_string( eax3 ) + reg_to_string( ebx3 ) + reg_to_string( ecx3 ) + reg_to_string( edx3 ) +
-      reg_to_string( eax4 ) + reg_to_string( ebx4 ) + reg_to_string( ecx4 ) + reg_to_string( edx4 );
+    std::string brand_string = regs_to_string( eax2, ebx2, ecx2, edx2,
+					       eax3, ebx3, ecx3, edx3,
+					       eax4, ebx4, ecx4, edx4 );
 
     // "The string is specified in Intel/AMD documentation to be null-terminated,
     // however this is not always the case [...] and software should not rely on it."
@@ -143,7 +124,6 @@ int main() {
       brand_string.resize(nul_idx);
 
     std::cout << "\tProcessor Brand string: '" << brand_string << "'" << std::endl;
-
   } else
     std::cout << "\t N/A.\n";
 

@@ -5,7 +5,6 @@
 
 namespace cpuid {
 
-
   template <typename RS>
   union SchizoReg32 {
     uint32_t  as_int;
@@ -20,6 +19,21 @@ namespace cpuid {
     char      as_str4 [4];
   };
 
+
+  /* Interpret a 32-bit register as a 4-byte string,
+     as in the manufacturer string or processor brand string
+  */
+  std::string reg_to_string(const u_int32_t reg) {
+    const  cpuid::SchizoReg32< void > dual_personality{reg};
+    return std::string( dual_personality.as_str4, 4);
+  }
+
+
+  template<typename... Args>
+  //requires std::are_same_v<Args...>  // TO DO: Concept
+  auto regs_to_string(const Args&... args) {
+    return (... + reg_to_string(args) );
+  }
 
 
   struct field_info {
