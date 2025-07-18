@@ -14,35 +14,35 @@ namespace cpuid {
     struct ebx_features {
       uint32_t fsgsbase            :1; // Access to base of %fs and %gs
       uint32_t ia32_tsc_adjust_msr :1; // IA32_TSC_ADJUST MSR
-      uint32_t sgx	          :1; // Software Guard Extensions
-      uint32_t bmi1	          :1; // Bit Manipulation Instruction Set 1
-      uint32_t hle	          :1; // TSX Hardware Lock Elision
-      uint32_t avx2	          :1; // Advanced Vector Extensions 2
-      uint32_t fdp_excptn_only	  :1; // x87 FPU data pointer register updated on exceptions only
-      uint32_t smep	          :1; // Supervisor Mode Execution Prevention
-      uint32_t bmi2	          :1; // Bit Manipulation Instruction Set 2
-      uint32_t erms	          :1; // Enhanced REP MOVSB/STOSB
-      uint32_t invpcid	          :1; // INVPCID instruction
-      uint32_t rtm	          :1; // TSX Restricted Transactional Memory
-      uint32_t rdtm_pqm	          :1; // Intel Resource Director (RDT) Monitoring or AMD Platform QOS Monitoring
+      uint32_t sgx                 :1; // Software Guard Extensions
+      uint32_t bmi1                :1; // Bit Manipulation Instruction Set 1
+      uint32_t hle                 :1; // TSX Hardware Lock Elision
+      uint32_t avx2                :1; // Advanced Vector Extensions 2
+      uint32_t fdp_excptn_only     :1; // x87 FPU data pointer register updated on exceptions only
+      uint32_t smep                :1; // Supervisor Mode Execution Prevention
+      uint32_t bmi2                :1; // Bit Manipulation Instruction Set 2
+      uint32_t erms                :1; // Enhanced REP MOVSB/STOSB
+      uint32_t invpcid             :1; // INVPCID instruction
+      uint32_t rtm                 :1; // TSX Restricted Transactional Memory
+      uint32_t rdtm_pqm            :1; // Intel Resource Director (RDT) Monitoring or AMD Platform QOS Monitoring
       uint32_t x87_fpu_cs_ds_depr  :1; // x87 FPU CS and DS deprecated
-      uint32_t mpx	          :1; // Intel MPX (Memory Protection Extensions)
-      uint32_t rdta_pqe	          :1; // Intel Resource Director (RDT) Allocation or AMD Platform QOS Enforcement
-      uint32_t avx512_f	          :1; // AVX-512 Foundation
-      uint32_t avx512_dq	          :1; // AVX-512 Doubleword and Quadword Instructions
-      uint32_t rdseed	          :1; // RDSEED instruction
-      uint32_t adx	          :1; // Intel ADX (Multi-Precision Add-Carry Instruction Extensions)
-      uint32_t smap	          :1; // Supervisor Mode Access Prevention
-      uint32_t avx512_ifma	  :1; // AVX-512 Integer Fused Multiply-Add Instructions
+      uint32_t mpx                 :1; // Intel MPX (Memory Protection Extensions)
+      uint32_t rdta_pqe            :1; // Intel Resource Director (RDT) Allocation or AMD Platform QOS Enforcement
+      uint32_t avx512_f            :1; // AVX-512 Foundation
+      uint32_t avx512_dq           :1; // AVX-512 Doubleword and Quadword Instructions
+      uint32_t rdseed              :1; // RDSEED instruction
+      uint32_t adx                 :1; // Intel ADX (Multi-Precision Add-Carry Instruction Extensions)
+      uint32_t smap                :1; // Supervisor Mode Access Prevention
+      uint32_t avx512_ifma         :1; // AVX-512 Integer Fused Multiply-Add Instructions
       uint32_t pcommit             :1; // (PCOMMIT instruction, deprecated)
-      uint32_t clflushopt	  :1; // CLFLUSHOPT instruction
+      uint32_t clflushopt          :1; // CLFLUSHOPT instruction
       uint32_t clwb                :1; // CLWB (Cache line writeback) instruction
-      uint32_t pt	          :1; // Intel Processor Trace
-      uint32_t avx512_pf	          :1; // AVX-512 Prefetch Instructions	(mprr)[a]
-      uint32_t avx512_er	          :1; // AVX-512 Exponential and Reciprocal Instructions
-      uint32_t avx512_cd	          :1; // AVX-512 Conflict Detection Instructions
-      uint32_t sha	          :1; // SHA-1 and SHA-256 extensions
-      uint32_t avx512_bw	          :1; // AVX-512 Byte and Word Instructions
+      uint32_t pt                  :1; // Intel Processor Trace
+      uint32_t avx512_pf           :1; // AVX-512 Prefetch Instructions (mprr)[a]
+      uint32_t avx512_er           :1; // AVX-512 Exponential and Reciprocal Instructions
+      uint32_t avx512_cd           :1; // AVX-512 Conflict Detection Instructions
+      uint32_t sha                 :1; // SHA-1 and SHA-256 extensions
+      uint32_t avx512_bw           :1; // AVX-512 Byte and Word Instructions
       uint32_t avx512_vl           :1; // AVX-512 Vector Length Extensions
 
     };
@@ -91,20 +91,20 @@ namespace cpuid {
       uint32_t rtm_always_abort           : 1; // bit 11: All TSX transactions are aborted
       uint32_t reserved_12                : 1; // bit 12: reserved
       uint32_t rtm_force_abort            : 1; // bit 13: TSX_FORCE_ABORT (MSR 0x10f) is available
-      uint32_t serialize	          : 1; // bit 14: SERIALIZE instruction
-      uint32_t hybrid	                  : 1; // bit 15: Mixture of CPU types in processor topology (e.g. Alder Lake)
-      uint32_t tsxldtrk	                  : 1; // bit 16: TSX load address tracking suspend/resume instructions (TSUSLDTRK and TRESLDTRK)
+      uint32_t serialize                  : 1; // bit 14: SERIALIZE instruction
+      uint32_t hybrid                     : 1; // bit 15: Mixture of CPU types in processor topology (e.g. Alder Lake)
+      uint32_t tsxldtrk                   : 1; // bit 16: TSX load address tracking suspend/resume instructions (TSUSLDTRK and TRESLDTRK)
       uint32_t reserved_17                : 1; // bit 17: reserved
-      uint32_t pconfig	                  : 1; // bit 18: Platform configuration (Memory Encryption Technologies Instructions)
-      uint32_t lbr	                  : 1; // bit 19: Architectural Last Branch Records
-      uint32_t cet_ibt	                  : 1; // bit 20: Control flow enforcement (CET): indirect branch tracking
+      uint32_t pconfig                    : 1; // bit 18: Platform configuration (Memory Encryption Technologies Instructions)
+      uint32_t lbr                        : 1; // bit 19: Architectural Last Branch Records
+      uint32_t cet_ibt                    : 1; // bit 20: Control flow enforcement (CET): indirect branch tracking
       uint32_t reserved_21                : 1; // bit 21: reserved
-      uint32_t amx_bf16	                  : 1; // bit 22: AMX tile computation on bfloat16 numbers
+      uint32_t amx_bf16                   : 1; // bit 22: AMX tile computation on bfloat16 numbers
       uint32_t avx512_fp16                : 1; // bit 23: AVX-512 half-precision floating-point arithmetic instructions[110]
-      uint32_t amx_tile	                  : 1; // bit 24: AMX tile load/store instructions
-      uint32_t amx_int8	                  : 1; // bit 25: AMX tile computation on 8-bit integers
+      uint32_t amx_tile                   : 1; // bit 24: AMX tile load/store instructions
+      uint32_t amx_int8                   : 1; // bit 25: AMX tile computation on 8-bit integers
       uint32_t ibrs_spec_ctrl             : 1; // bit 26: Speculation Control, part of Indirect Branch Control (IBC)
-      uint32_t stibp	                  : 1; // bit 27: Single Thread Indirect Branch Predictor, part of IBC
+      uint32_t stibp                      : 1; // bit 27: Single Thread Indirect Branch Predictor, part of IBC
       uint32_t l1d_flush                  : 1; // bit 28: IA32_FLUSH_CMD MSR
       uint32_t ia32_arch_capabilities_msr : 1; // bit 29: IA32_ARCH_CAPABILITIES MSR (lists speculative side channel mitigations)
       uint32_t ia32_core_capabilities_msr : 1; // bit 30: IA32_CORE_CAPABILITIES MSR (lists model-specific core capabilities)

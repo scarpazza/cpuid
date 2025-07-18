@@ -21,8 +21,23 @@
 
 #include "cpuid.hpp"
 
+/* Interpret a 32-bit register as a 4-byte string,
+   as in the manufacturer string or processor brand string
+ */
+std::string reg_to_string(const u_int32_t reg) {
+  const  cpuid::SchizoReg32< void > dual_personality{reg};
+  return std::string( dual_personality.as_str4, 4);
+}
 
+/*
+template<typename... Args>
+requires std::are_same_v<Args...>  // Concept
+Add(const Args&... args) noexcept
+{
 
+    return (... + args);
+}
+*/
 
 const auto query_leaf(const uint32_t leaf,
 		      const uint32_t subleaf=0) {
@@ -56,15 +71,8 @@ int main() {
 
     max_leaf = eax;
     std::cout << "Max EAX leaf: " << max_leaf.value() << std::endl;
-
-    const SchizoReg32< void > r_ebx{ebx};
-    const SchizoReg32< void > r_ecx{ecx};
-    const SchizoReg32< void > r_edx{edx};
-
-    std::string manufacturer =
-      std::string( r_ebx.as_str4, 4) +
-      std::string( r_edx.as_str4, 4) +
-      std::string( r_ecx.as_str4, 4); // yes, it's EBX, EDX and then ECX
+    const std::string manufacturer = reg_to_string( ebx ) + reg_to_string( edx ) + reg_to_string( ecx );
+    // yes, it's EBX, EDX and then ECX
 
     std::cout << "Manufacturer: '" << manufacturer << "'" << std::endl;
   }
@@ -75,8 +83,7 @@ int main() {
 
     max_ext_leaf = eax;
     std::cout << "Max EAX extended leaf: 0x" << std::hex << max_ext_leaf.value()
-	      << std::dec
-	      << std::endl;
+	      << std::dec << std::endl;
   }
 
 
@@ -86,15 +93,7 @@ int main() {
 
     if ( eax != 0x4000'0000 )
       {
-        const SchizoReg32< void > r_ebx{ebx};
-	const SchizoReg32< void > r_ecx{ecx};
-	const SchizoReg32< void > r_edx{edx};
-
-	std::string hypervisor =
-	  std::string( r_ebx.as_str4, 4) +
-	  std::string( r_ecx.as_str4, 4) +
-	  std::string( r_edx.as_str4, 4);
-
+	const auto hypervisor = reg_to_string( ebx ) + reg_to_string( ecx ) + reg_to_string( edx );
 	std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
       }
     else
@@ -131,14 +130,10 @@ int main() {
     const auto [eax3, ebx3, ecx3, edx3]  = query_leaf(0x8000'0003);
     const auto [eax4, ebx4, ecx4, edx4]  = query_leaf(0x8000'0004);
 
-    const SchizoReg32< void > r_eax2{eax2}, r_ebx2{ebx2}, r_ecx2{ecx2}, r_edx2{edx2};
-    const SchizoReg32< void > r_eax3{eax3}, r_ebx3{ebx3}, r_ecx3{ecx3}, r_edx3{edx3};
-    const SchizoReg32< void > r_eax4{eax4}, r_ebx4{ebx4}, r_ecx4{ecx4}, r_edx4{edx4};
-
     std::string brand_string =
-      std::string( r_eax2.as_str4, 4) + std::string( r_ebx2.as_str4, 4) + std::string( r_ecx2.as_str4, 4) + std::string( r_edx2.as_str4, 4) +
-      std::string( r_eax3.as_str4, 4) + std::string( r_ebx3.as_str4, 4) + std::string( r_ecx3.as_str4, 4) + std::string( r_edx3.as_str4, 4) +
-      std::string( r_eax4.as_str4, 4) + std::string( r_ebx4.as_str4, 4) + std::string( r_ecx4.as_str4, 4) + std::string( r_edx4.as_str4, 4);
+      reg_to_string( eax2 ) + reg_to_string( ebx2 ) + reg_to_string( ecx2 ) + reg_to_string( edx2 ) +
+      reg_to_string( eax3 ) + reg_to_string( ebx3 ) + reg_to_string( ecx3 ) + reg_to_string( edx3 ) +
+      reg_to_string( eax4 ) + reg_to_string( ebx4 ) + reg_to_string( ecx4 ) + reg_to_string( edx4 );
 
     // "The string is specified in Intel/AMD documentation to be null-terminated,
     // however this is not always the case [...] and software should not rely on it."
