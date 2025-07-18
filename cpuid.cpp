@@ -98,10 +98,7 @@ int main() {
 	std::cout << "\tHypervisor vendor: '" << hypervisor << "'" << std::endl;
       }
     else
-      {
-	std::cout << "\tNo hypervisor detected." << std::endl;
-      }
-
+      std::cout << "\tNo hypervisor detected." << std::endl;
   }
 
 
@@ -125,6 +122,36 @@ int main() {
     interpret_fields32<leaf80000001::ecx_features>(ecx);
   } else
     std::cout << "\t N/A.\n";
+
+
+  std::cout << "Extended leaves 2,3,4 (EAX = 0x8000'0002...4):" << std::endl;
+  if (0x8000'0004 <= max_ext_leaf)
+  {
+    const auto [eax2, ebx2, ecx2, edx2]  = query_leaf(0x8000'0002);
+    const auto [eax3, ebx3, ecx3, edx3]  = query_leaf(0x8000'0003);
+    const auto [eax4, ebx4, ecx4, edx4]  = query_leaf(0x8000'0004);
+
+    const SchizoReg32< void > r_eax2{eax2}, r_ebx2{ebx2}, r_ecx2{ecx2}, r_edx2{edx2};
+    const SchizoReg32< void > r_eax3{eax3}, r_ebx3{ebx3}, r_ecx3{ecx3}, r_edx3{edx3};
+    const SchizoReg32< void > r_eax4{eax4}, r_ebx4{ebx4}, r_ecx4{ecx4}, r_edx4{edx4};
+
+    std::string brand_string =
+      std::string( r_eax2.as_str4, 4) + std::string( r_ebx2.as_str4, 4) + std::string( r_ecx2.as_str4, 4) + std::string( r_edx2.as_str4, 4) +
+      std::string( r_eax3.as_str4, 4) + std::string( r_ebx3.as_str4, 4) + std::string( r_ecx3.as_str4, 4) + std::string( r_edx3.as_str4, 4) +
+      std::string( r_eax4.as_str4, 4) + std::string( r_ebx4.as_str4, 4) + std::string( r_ecx4.as_str4, 4) + std::string( r_edx4.as_str4, 4);
+
+    // "The string is specified in Intel/AMD documentation to be null-terminated,
+    // however this is not always the case [...] and software should not rely on it."
+    // - https://en.wikipedia.org/wiki/CPUID#EAX=8000'0001h:_Extended_Processor_Info_and_Feature_Bits
+    const auto nul_idx = brand_string.find( char{0} );
+    if ( nul_idx != std::string::npos)
+      brand_string.resize(nul_idx);
+
+    std::cout << "\tProcessor Brand string: '" << brand_string << "'" << std::endl;
+
+  } else
+    std::cout << "\t N/A.\n";
+
 
 
   if ( 7 <= max_leaf.value() )
