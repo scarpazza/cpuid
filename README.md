@@ -1,7 +1,7 @@
-![Test Image 4](silly-image.jpg = 500px)
-
 Yet another CPUID tool
 ===========================================
+
+<img src="https://raw.githubusercontent.com/scarpazza/cpuid/refs/heads/master/silly-image.jpg" width="500">
 
 ... but one made to demonstrate exercise C++26 Reflection features.
 
