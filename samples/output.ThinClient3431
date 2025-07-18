@@ -1,0 +1,274 @@
+Leaf 0:
+Max EAX leaf: 22
+Manufacturer: 'GenuineIntel'
+Extended leaf 0 (EAX = 0x8000'0000):
+Max EAX extended leaf: 0x80000008
+Hypervisor Leaf 0 (0x4000'0000):
+	Hypervisor vendor: 'Microsoft Hv'
+Leaf 1:
+	eax_features------------------------------------------------
+		stepping                 	unsigned int	bf (4 bits) @0	 =13	 =0xd
+		model                    	unsigned int	bf (4 bits) @4	 =14	 =0xe
+		family                   	unsigned int	bf (4 bits) @8	 =6	 =0x6
+		proc_type                	unsigned int	bf (2 bits) @12	 =0	 =0x0
+		reserved_14_15           	unsigned int	bf (2 bits) @14	 =0	 =0x0
+		extended_model           	unsigned int	bf (4 bits) @16	 =9	 =0x9
+		extended_family          	unsigned int	bf (8 bits) @20	 =0	 =0x0
+		reserved_28_31           	unsigned int	bf (4 bits) @28	 =0	 =0x0
+	ebx_features------------------------------------------------
+		brand_index              	unsigned char	   (8 bits) @0	 =0	 =0x0
+		clflush_line             	unsigned char	   (8 bits) @8	 =8	 =0x8
+		max_logical_id           	unsigned char	   (8 bits) @16	 =8	 =0x8
+		apic_id                  	unsigned char	   (8 bits) @24	 =1	 =0x1
+	ecx_features------------------------------------------------
+		sse3                     	unsigned int	bf (1 bit ) @0	 =1	 =0x1
+		pclmulqdq                	unsigned int	bf (1 bit ) @1	 =1	 =0x1
+		dtes64                   	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		monitor                  	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		ds_cpl                   	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		vmx                      	unsigned int	bf (1 bit ) @5	 =1	 =0x1
+		smx                      	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		est                      	unsigned int	bf (1 bit ) @7	 =0	 =0x0
+		tm2                      	unsigned int	bf (1 bit ) @8	 =0	 =0x0
+		ssse3                    	unsigned int	bf (1 bit ) @9	 =1	 =0x1
+		cnxt_id                  	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		sdbg                     	unsigned int	bf (1 bit ) @11	 =0	 =0x0
+		fma                      	unsigned int	bf (1 bit ) @12	 =1	 =0x1
+		cmpxchg16b               	unsigned int	bf (1 bit ) @13	 =1	 =0x1
+		xtpr                     	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		pdcm                     	unsigned int	bf (1 bit ) @15	 =1	 =0x1
+		reserved_1               	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		pcid                     	unsigned int	bf (1 bit ) @17	 =1	 =0x1
+		dca                      	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		sse4_1                   	unsigned int	bf (1 bit ) @19	 =1	 =0x1
+		sse4_2                   	unsigned int	bf (1 bit ) @20	 =1	 =0x1
+		x2apic                   	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		movbe                    	unsigned int	bf (1 bit ) @22	 =1	 =0x1
+		popcnt                   	unsigned int	bf (1 bit ) @23	 =1	 =0x1
+		tsc_deadline             	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		aes_ni                   	unsigned int	bf (1 bit ) @25	 =1	 =0x1
+		xsave                    	unsigned int	bf (1 bit ) @26	 =1	 =0x1
+		osxsave                  	unsigned int	bf (1 bit ) @27	 =1	 =0x1
+		avx                      	unsigned int	bf (1 bit ) @28	 =1	 =0x1
+		f16c                     	unsigned int	bf (1 bit ) @29	 =1	 =0x1
+		rdrnd                    	unsigned int	bf (1 bit ) @30	 =1	 =0x1
+		hypervisor               	unsigned int	bf (1 bit ) @31	 =1	 =0x1
+	edx_features------------------------------------------------
+		fpu                      	unsigned int	bf (1 bit ) @0	 =1	 =0x1
+		vme                      	unsigned int	bf (1 bit ) @1	 =1	 =0x1
+		de                       	unsigned int	bf (1 bit ) @2	 =1	 =0x1
+		pse                      	unsigned int	bf (1 bit ) @3	 =1	 =0x1
+		tsc                      	unsigned int	bf (1 bit ) @4	 =1	 =0x1
+		msr                      	unsigned int	bf (1 bit ) @5	 =1	 =0x1
+		pae                      	unsigned int	bf (1 bit ) @6	 =1	 =0x1
+		mce                      	unsigned int	bf (1 bit ) @7	 =1	 =0x1
+		cx8                      	unsigned int	bf (1 bit ) @8	 =1	 =0x1
+		apic                     	unsigned int	bf (1 bit ) @9	 =1	 =0x1
+		mtrr_reserved            	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		sep                      	unsigned int	bf (1 bit ) @11	 =1	 =0x1
+		mtrr                     	unsigned int	bf (1 bit ) @12	 =1	 =0x1
+		pge                      	unsigned int	bf (1 bit ) @13	 =1	 =0x1
+		mca                      	unsigned int	bf (1 bit ) @14	 =1	 =0x1
+		cmov                     	unsigned int	bf (1 bit ) @15	 =1	 =0x1
+		pat                      	unsigned int	bf (1 bit ) @16	 =1	 =0x1
+		pse36                    	unsigned int	bf (1 bit ) @17	 =1	 =0x1
+		psn                      	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		clfsh                    	unsigned int	bf (1 bit ) @19	 =1	 =0x1
+		nx                       	unsigned int	bf (1 bit ) @20	 =0	 =0x0
+		ds                       	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		acpi                     	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		mmx                      	unsigned int	bf (1 bit ) @23	 =1	 =0x1
+		fxsr                     	unsigned int	bf (1 bit ) @24	 =1	 =0x1
+		sse                      	unsigned int	bf (1 bit ) @25	 =1	 =0x1
+		sse2                     	unsigned int	bf (1 bit ) @26	 =1	 =0x1
+		ss                       	unsigned int	bf (1 bit ) @27	 =1	 =0x1
+		htt                      	unsigned int	bf (1 bit ) @28	 =1	 =0x1
+		tm                       	unsigned int	bf (1 bit ) @29	 =0	 =0x0
+		ia64                     	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		pbe                      	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+Extended leaf 1 (EAX = 0x8000'0001):
+	edx_features------------------------------------------------
+		fpu_amd                  	unsigned int	bf (1 bit ) @0	 =0	 =0x0
+		vme_amd                  	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		de_amd                   	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		pse_amd                  	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		tsc_amd                  	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		msr_amd                  	unsigned int	bf (1 bit ) @5	 =0	 =0x0
+		pae_amd                  	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		mce_amd                  	unsigned int	bf (1 bit ) @7	 =0	 =0x0
+		cx8_amd                  	unsigned int	bf (1 bit ) @8	 =0	 =0x0
+		apic_amd                 	unsigned int	bf (1 bit ) @9	 =0	 =0x0
+		syscall_k6               	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		syscall                  	unsigned int	bf (1 bit ) @11	 =1	 =0x1
+		mtrr_amd                 	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		pge_amd                  	unsigned int	bf (1 bit ) @13	 =0	 =0x0
+		mca_amd                  	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		cmov_amd                 	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		pat_amd                  	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		pse36_amd                	unsigned int	bf (1 bit ) @17	 =0	 =0x0
+		reserved_18              	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		exx                      	unsigned int	bf (1 bit ) @19	 =0	 =0x0
+		nx                       	unsigned int	bf (1 bit ) @20	 =1	 =0x1
+		reserved_21              	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		mmx_ext                  	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		mmx_amd                  	unsigned int	bf (1 bit ) @23	 =0	 =0x0
+		fxsr_amd                 	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		fxsr_opt                 	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		pdpe1gb                  	unsigned int	bf (1 bit ) @26	 =1	 =0x1
+		rdtscp                   	unsigned int	bf (1 bit ) @27	 =1	 =0x1
+		reserved_28              	unsigned int	bf (1 bit ) @28	 =0	 =0x0
+		lm                       	unsigned int	bf (1 bit ) @29	 =1	 =0x1
+		has_3dnow_ext            	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		has_3dnow                	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+	ecx_features------------------------------------------------
+		lahf_lm                  	unsigned int	bf (1 bit ) @0	 =1	 =0x1
+		cmp_legacy               	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		svm                      	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		extapic                  	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		cr8_legacy               	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		abm                      	unsigned int	bf (1 bit ) @5	 =1	 =0x1
+		sse4a                    	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		misalignsse              	unsigned int	bf (1 bit ) @7	 =0	 =0x0
+		has_3dnow_prefetch       	unsigned int	bf (1 bit ) @8	 =1	 =0x1
+		osvw                     	unsigned int	bf (1 bit ) @9	 =0	 =0x0
+		ibs                      	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		xop                      	unsigned int	bf (1 bit ) @11	 =0	 =0x0
+		skinit                   	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		wdt                      	unsigned int	bf (1 bit ) @13	 =0	 =0x0
+		reserved_14              	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		lwp                      	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		fma4                     	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		tce                      	unsigned int	bf (1 bit ) @17	 =0	 =0x0
+		reserved_18              	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		nodeid_msr               	unsigned int	bf (1 bit ) @19	 =0	 =0x0
+		reserved_20              	unsigned int	bf (1 bit ) @20	 =0	 =0x0
+		tbm                      	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		topoext                  	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		perfctr_core             	unsigned int	bf (1 bit ) @23	 =0	 =0x0
+		perfctr_nb               	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		streamperfmon            	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		dbx                      	unsigned int	bf (1 bit ) @26	 =0	 =0x0
+		perftsc                  	unsigned int	bf (1 bit ) @27	 =0	 =0x0
+		pcx_l2i                  	unsigned int	bf (1 bit ) @28	 =0	 =0x0
+		monitorx                 	unsigned int	bf (1 bit ) @29	 =0	 =0x0
+		addr_mask_ext            	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		reserved_31              	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+Extended leaves 2,3,4 (EAX = 0x8000'0002...4):
+	Processor Brand string: 'Intel(R) Core(TM) i7-9700 CPU @ 3.00GHz'
+Extended leaf 5 (EAX = 0x8000'0005): L1 cache and TLB identifiers:
+	eax_features------------------------------------------------
+		L1_huge_TLB_instr_entries	unsigned char	   (8 bits) @0	 =0	 =0x0
+		L1_huge_TLB_associativity	unsigned char	   (8 bits) @8	 =0	 =0x0
+		L1_huge_TLB_data_entries 	unsigned char	   (8 bits) @16	 =0	 =0x0
+		L1_huge_TLB_data_associativity	unsigned char	   (8 bits) @24	 =0	 =0x0
+	ebx_features------------------------------------------------
+		L1_small_TLB_instr_entries	unsigned char	   (8 bits) @0	 =0	 =0x0
+		L1_small_TLB_associativity	unsigned char	   (8 bits) @8	 =0	 =0x0
+		L1_small_TLB_data_entries	unsigned char	   (8 bits) @16	 =0	 =0x0
+		L1_small_TLB_data_associativity	unsigned char	   (8 bits) @24	 =0	 =0x0
+	ecx_features------------------------------------------------
+		L1D_line_size_bytes      	unsigned char	   (8 bits) @0	 =0	 =0x0
+		L1D_lines_per_tag        	unsigned char	   (8 bits) @8	 =0	 =0x0
+		L1D_associativity        	unsigned char	   (8 bits) @16	 =0	 =0x0
+		L1D_cache_size_kb        	unsigned char	   (8 bits) @24	 =0	 =0x0
+	edx_features------------------------------------------------
+		L1I_line_size_bytes      	unsigned char	   (8 bits) @0	 =0	 =0x0
+		L1I_lines_per_tag        	unsigned char	   (8 bits) @8	 =0	 =0x0
+		L1I_associativity        	unsigned char	   (8 bits) @16	 =0	 =0x0
+		L1I_cache_size_kb        	unsigned char	   (8 bits) @24	 =0	 =0x0
+Leaf 7, subleaf 0:
+	Max leaf-7 ECX sub-leaf: 0
+	eax_features------------------------------------------------
+		max_subleaf              	unsigned int	   (32 bits) @0	 =0	 =0x0
+	ebx_features------------------------------------------------
+		fsgsbase                 	unsigned int	bf (1 bit ) @0	 =1	 =0x1
+		ia32_tsc_adjust_msr      	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		sgx                      	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		bmi1                     	unsigned int	bf (1 bit ) @3	 =1	 =0x1
+		hle                      	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		avx2                     	unsigned int	bf (1 bit ) @5	 =1	 =0x1
+		fdp_excptn_only          	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		smep                     	unsigned int	bf (1 bit ) @7	 =1	 =0x1
+		bmi2                     	unsigned int	bf (1 bit ) @8	 =1	 =0x1
+		erms                     	unsigned int	bf (1 bit ) @9	 =1	 =0x1
+		invpcid                  	unsigned int	bf (1 bit ) @10	 =1	 =0x1
+		rtm                      	unsigned int	bf (1 bit ) @11	 =0	 =0x0
+		rdtm_pqm                 	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		x87_fpu_cs_ds_depr       	unsigned int	bf (1 bit ) @13	 =1	 =0x1
+		mpx                      	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		rdta_pqe                 	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		avx512_f                 	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		avx512_dq                	unsigned int	bf (1 bit ) @17	 =0	 =0x0
+		rdseed                   	unsigned int	bf (1 bit ) @18	 =1	 =0x1
+		adx                      	unsigned int	bf (1 bit ) @19	 =1	 =0x1
+		smap                     	unsigned int	bf (1 bit ) @20	 =1	 =0x1
+		avx512_ifma              	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		pcommit                  	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		clflushopt               	unsigned int	bf (1 bit ) @23	 =1	 =0x1
+		clwb                     	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		pt                       	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		avx512_pf                	unsigned int	bf (1 bit ) @26	 =0	 =0x0
+		avx512_er                	unsigned int	bf (1 bit ) @27	 =0	 =0x0
+		avx512_cd                	unsigned int	bf (1 bit ) @28	 =0	 =0x0
+		sha                      	unsigned int	bf (1 bit ) @29	 =0	 =0x0
+		avx512_bw                	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		avx512_vl                	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+	ecx_features------------------------------------------------
+		prefetchwt1              	unsigned int	bf (1 bit ) @0	 =0	 =0x0
+		avx512_vbmi              	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		umip                     	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		pku                      	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		ospke                    	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		waitpkg                  	unsigned int	bf (1 bit ) @5	 =0	 =0x0
+		avx512_vbmi2             	unsigned int	bf (1 bit ) @6	 =0	 =0x0
+		cetss_shstk              	unsigned int	bf (1 bit ) @7	 =0	 =0x0
+		gfni                     	unsigned int	bf (1 bit ) @8	 =0	 =0x0
+		vaes                     	unsigned int	bf (1 bit ) @9	 =0	 =0x0
+		vpclmulqdq               	unsigned int	bf (1 bit ) @10	 =0	 =0x0
+		avx512_vnni              	unsigned int	bf (1 bit ) @11	 =0	 =0x0
+		avx512_bitalg            	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		tme_en                   	unsigned int	bf (1 bit ) @13	 =0	 =0x0
+		avx512_vpopcntdq         	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		fzm                      	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		la57                     	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		mawau                    	unsigned int	bf (5 bits) @17	 =0	 =0x0
+		rdpid                    	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		kl                       	unsigned int	bf (1 bit ) @23	 =0	 =0x0
+		bus_lock_detect          	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		cldemote                 	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		mprr_reserved            	unsigned int	bf (1 bit ) @26	 =0	 =0x0
+		movdiri                  	unsigned int	bf (1 bit ) @27	 =0	 =0x0
+		movdir64b                	unsigned int	bf (1 bit ) @28	 =0	 =0x0
+		enqcmd                   	unsigned int	bf (1 bit ) @29	 =0	 =0x0
+		sgx_lc                   	unsigned int	bf (1 bit ) @30	 =0	 =0x0
+		pks                      	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+	edx_features------------------------------------------------
+		sgx_tem                  	unsigned int	bf (1 bit ) @0	 =0	 =0x0
+		sgx_keys                 	unsigned int	bf (1 bit ) @1	 =0	 =0x0
+		avx512_4vnniw            	unsigned int	bf (1 bit ) @2	 =0	 =0x0
+		avx512_4fmaps            	unsigned int	bf (1 bit ) @3	 =0	 =0x0
+		fsrm                     	unsigned int	bf (1 bit ) @4	 =0	 =0x0
+		uintr                    	unsigned int	bf (1 bit ) @5	 =0	 =0x0
+		reserved_6_7             	unsigned int	bf (2 bits) @6	 =0	 =0x0
+		md_clear                 	unsigned int	bf (1 bit ) @8	 =0	 =0x0
+		rtm_always_abort         	unsigned int	bf (1 bit ) @9	 =0	 =0x0
+		reserved_12              	unsigned int	bf (1 bit ) @10	 =1	 =0x1
+		rtm_force_abort          	unsigned int	bf (1 bit ) @11	 =0	 =0x0
+		serialize                	unsigned int	bf (1 bit ) @12	 =0	 =0x0
+		hybrid                   	unsigned int	bf (1 bit ) @13	 =0	 =0x0
+		tsxldtrk                 	unsigned int	bf (1 bit ) @14	 =0	 =0x0
+		reserved_17              	unsigned int	bf (1 bit ) @15	 =0	 =0x0
+		pconfig                  	unsigned int	bf (1 bit ) @16	 =0	 =0x0
+		lbr                      	unsigned int	bf (1 bit ) @17	 =0	 =0x0
+		cet_ibt                  	unsigned int	bf (1 bit ) @18	 =0	 =0x0
+		reserved_21              	unsigned int	bf (1 bit ) @19	 =0	 =0x0
+		amx_bf16                 	unsigned int	bf (1 bit ) @20	 =0	 =0x0
+		avx512_fp16              	unsigned int	bf (1 bit ) @21	 =0	 =0x0
+		amx_tile                 	unsigned int	bf (1 bit ) @22	 =0	 =0x0
+		amx_int8                 	unsigned int	bf (1 bit ) @23	 =0	 =0x0
+		ibrs_spec_ctrl           	unsigned int	bf (1 bit ) @24	 =0	 =0x0
+		stibp                    	unsigned int	bf (1 bit ) @25	 =0	 =0x0
+		l1d_flush                	unsigned int	bf (1 bit ) @26	 =1	 =0x1
+		ia32_arch_capabilities_msr	unsigned int	bf (1 bit ) @27	 =1	 =0x1
+		ia32_core_capabilities_msr	unsigned int	bf (1 bit ) @28	 =1	 =0x1
+		ssbd                     	unsigned int	bf (1 bit ) @29	 =1	 =0x1
