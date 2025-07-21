@@ -1,5 +1,5 @@
 
-// https://en.wikichip.org/wiki/intel/cpuid
+// source: https://en.wikichip.org/wiki/intel/cpuid
 
 
 #pragma once
@@ -154,49 +154,55 @@ const CodenameEntry codenames[] = {
     { "Sandy Bridge (Client)",2011, "SNB-M, SNB-H",                   0, 6, 0x2, 0xA },
 
     { "Westmere (Client)",    2010, "Arrandale, Clarkdale",           0, 6, 0x2, 0x5 },
+
+    { "Nehalem (Client)",     2009, "Auburndale?, Havendale?",        0, 6, 0x1, 0xF },
+    { "Nehalem (Client)",     2009, "Clarksfield",                    0, 6, 0x1, 0xE },
+
+    { "Penryn (Client)",      2008, "Penryn, Wolfdale, Yorkfield",    0, 6, 0x1, 0x7 },
+
+    { "Core (Client)",        2007, "Merom L",                        0, 6, 0x1, 0x6 },
+    { "Core (Client)",        2007, "Merom",                          0, 6, 0x0, 0xF },
+
+    { "Modified Pentium M",   2007, "Yonah",                          0, 6, 0x0, 0xE },
+
+    { "Pentium M",            2007, "Tolapai",                        0, 6, 0x1, 0x5 },
+    { "Pentium M",            2003, "Dothan",                         0, 6, 0x0, 0xD },
+    { "Pentium M",            2003, "Banias",                         0, 6, 0x0, 0x9 },
+
+    { "P6 Pentium",           2001, "Tualatin",                       0, 6, 0x0, 0xB },
+    { "P6 Pentium",           1999, "Coppermine, Coppermine T",       0, 6, 0x0, 0x8 },
+    { "P6 Pentium",           1999, "Katmai",                         0, 6, 0x0, 0x7 },
+    { "P6 Pentium",           2000, "",                               0, 6, 0x0, 0x6 },
+    { "P6 Pentium",           1998, "Deschutes",                      0, 6, 0x0, 0x5 },
+    { "P6 Pentium",           1997, "Klamath Pentium II",             0, 6, 0x0, 0x3 },
+    { "P6 Pentium",           1995, "Pentium Pro",                    0, 6, 0x0, 0x1 },
+
+    // family 5
+
+    { "Lakemont",             2013, "Quark D1000",                    0, 5, 0x0, 0xA },
+    { "Lakemont",             2013, "Quark X1000",                    0, 5, 0x0, 0x9 },
+
+    { "P5",                   1993, "P55C Mobile",                    0, 5, 0x0, 0x8 },
+    { "P5",                   1993, "P55C Mobile",                    0, 5, 0x0, 0x7 },
+    { "P5",                   1993, "P55C Pentium MMX",               0, 5, 0x0, 0x4 },
+    { "P5",                   1993, "P54CS Pentium 75",               0, 5, 0x0, 0x2 },
+    { "P5",                   1993, "Pentium P54CQS",                 0, 5, 0x0, 0x1 },
+    { "P5",                   1993, "P5 A-step",                      0, 5, 0x0, 0x0 },
+
+
+
+    // family 4
+    { "Intel 486",            1993, "Intel 80486",                    0, 4, 0x0, 0x9 },
+    { "Intel 486",            1994, "Intel 486DX4",                   0, 4, 0x0, 0x8 },
+    { "Intel 486",            1989, "Intel 80486 (model 7)",          0, 4, 0x0, 0x7 },
+    { "Intel 486",            1989, "Intel 80486 (model 5)",          0, 4, 0x0, 0x5 },
+    { "Intel 486",            1992, "Intel 486SL",                    0, 4, 0x0, 0x4 },
+    { "Intel 486",            1992, "Intel 486DX2",                   0, 4, 0x0, 0x3 },
+    { "Intel 486",            1989, "Intel 486SX",                    0, 4, 0x0, 0x2 },
+    { "Intel 486",            1989, "Intel 486DX",                    0, 4, 0x0, 0x1 },
+
+
+
+
     
-    { "Nehalem (Client)",     2009, "Clarksfield/Lynnfield",    0x0,6,0x1,0xE },
-
-    { "Penryn (Client)",      2008, "Penryn/Wolfdale/Yorkfield",0x0,6,0x1,0x7 },
-    { "Core (Client)",        2007, "Merom",0x0,6,0x1,0x6 },
-
-  /*
-  { "Merom","2006","Merom",0x0,6,0x0,0xF },
-  { "Yonah","2006","Modified Pentium M (Yonah)",0x0,6,0x0,0xE },
-  { "Tolapai (Pentium M)","2005","Pentium M (Tolapai)",0x0,6,0x1,0x5 },
-  { "Dothan","2004","Pentium M (Dothan)",0x0,6,0x0,0xD },
-  { "Banias","2003","Pentium M (Banias)",0x0,6,0x0,0x9 },
-  { "Tualatin","2002","Pentium III (Tualatin)",0x0,6,0x0,0xB },
-  { "Coppermine","2001","Coppermine",0x0,6,0x0,0x8 },
-  { "Katmai","2000","Katmai",0x0,6,0x0,0x7 },
-  { "Deschutes","1999","Pentium III (Deschutes)",0x0,6,0x0,0x5 },
-  { "Klamath","1998","Pentium II (Klamath)",0x0,6,0x0,0x3 },
-  { "Pentium Pro","1995","Pentium Pro",0x0,6,0x0,0x1 },
-
-
-
-  { "Lakemont",    "?","Quark D1000",0x0,5,0x0,0xA },
-  { "Lakemont",    "?","Quark X1000",0x0,5,0x0,0x9 },
-  { "P5",      "1993?","Pentium P55C Mobile",0x0,5,0x0,0x8 },
-  { "P5",   "1993?","Pentium P5 A-step",0x0,5,0x0,0x0 },
-  { "P5","1993?","Pentium P55C (MMX)",0x0,5,0x0,0x4 },
-  { "P5","1993?","Pentium P54CS",0x0,5,0x0,0x2 },
-  { "P5","1993?","Pentium P54CQS",0x0,5,0x0,0x1 },
-  { "Intel 486","1993?","Intel 80486",0x0,4,0x0,0x9 },
-  { "Intel 486","1993?","Intel 486DX4",0x0,4,0x0,0x8 },
-  { "Intel 486","1993?","Intel 80486 (model 7)",0x0,4,0x0,0x7 },
-  { "Intel 486","1993?","Intel 80486 (model 5)",0x0,4,0x0,0x5 },
-  { "Intel 486","1993?","Intel 486SL",0x0,4,0x0,0x4 },
-  { "Intel 486","1993?","Intel 486DX2",0x0,4,0x0,0x3 },
-  { "Intel 486","1993?","Intel 486SX",0x0,4,0x0,0x2 },
-  { "Intel 486","1993?","Intel 486DX",0x0,4,0x0,0x1 },
-
-
-  */
-
-
-    // source https://en.wikichip.org/wiki/amd/cpuid
-
-
-
 };
