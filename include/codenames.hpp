@@ -281,17 +281,99 @@ const CodenameEntry codenames[] = {
   { "Zen",                    2018, "Naples, Summit Ridge, Whitehaven, Snowy Owl", 8, 0xF,  0, 1 },
   { "Zen",                    2018, "?",                              8,   0xF,   0, 0 },
 
+  // Family 22
+  { "Puma",                   2014, "Beema, Mullins, Steppe Eagle, Crowned Eagle",        7, 0xF, 3, 0 },
+  { "Jaguar",                 2014, "Scorpio Engine",                                     7, 0xF, 0, 0 },
 
 
+  // Family 21
+  { "Excavator",              2015, "Stoney Ridge",                   6, 0xF,  7, 0 },
+  { "Excavator",              2015, "Bristol Ridge"                   6, 0xF,  6, 5 },
+  { "Excavator",              2015, "Carrizo",                        6, 0xF,  6, 0 },
+
+  { "Steamroller",            2015, "?",                              6, 0xF,  4, 0 },
+  { "Steamroller",            2015, "Godavari",                       6, 0xF,  3, 8 },
+  { "Steamroller",            2015, "Kaveri",                         6, 0xF,  3, 0 },
 
 
+  { "Piledriver",             2015, "Richland",                       6, 0xF,  1, 3 },
+  { "Piledriver",             2015, "Trinity",                        6, 0xF,  1, 0 },
+  { "Piledriver",             2015, "Abu Dhabi, Warsaw, Seoul, Delhi, Vishera", 6, 0xF,  0, 2 },
+  { "Bulldozer",              2015, "Interlagos, Valencia, Zurich, Zambezi",    6, 0xF,  0, 1 },
+  { "Bulldozer",              2015, "?",                                        6, 0xF,  0, 0 },
 
-  { "Am486"                 0, 4,  0, 3, },
-  { "Am486"            0, 4,  0, 7,                                             },
-  { "Am486"            0, 4,  0, 8,                                             },
-  { "Am486"            0, 4,  0, 9,                                             },
-  { "Am5x86"           0, 4,                                                     },
 
+  // Family 20
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xF},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xE},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xD},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xC},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xB},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0xA},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x9},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x8},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x7},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x6},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x5},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x4},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x3},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x2},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x1},
+  { "Bobcat",                 2011, "Desna, Ontario, Zacate",         5, 0xF, 0, 0x0},
+
+
+  // Family 16
+  { "K10",                    2007, "Zuban, Zosma",                   1, 0xF, 0, 0xA },
+  { "K10",                    2007, "Magny Cours",                    1, 0xF, 0, 0x9 },
+  { "K10",                    2007, "Lisbon, Instabul",               1, 0xF, 0,   8 },
+  { "K10",                    2007, "Caspian, Geneva, ...",           1, 0xF, 0,   6 },
+  { "K10",                    2007, "",                               1, 0xF, 0,   5 },
+  { "K10",                    2007, "Shanghai, Suzuka"                1, 0xF, 0,   4 },
+  { "K10",                    2007, "Barcelona, Budapest, Agena, Toliman, Kuma", 1, 0xF,  0, 2 },
+
+
+  // Family 15
+  { "K8",                     2003, "" ,                              0, 0xF, 12, 1   },
+  { "K8",                     2003, "" ,                              0, 0xF,  7, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  7, 12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  6, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  6, 12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  6, 11 },
+  { "K8",                     2003, "" ,                              0, 0xF,  6, 8  },
+  { "K8",                     2003, "" ,                              0, 0xF,  5, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  5, 13 },
+  { "K8",                     2003, "" ,                              0, 0xF,  4, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  4,  12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  4,  11 },
+  { "K8",                     2003, "" ,                              0, 0xF,  4,   8 },
+  { "K8",                     2003, "" ,                              0, 0xF,  4,   3 },
+  { "K8",                     2003, "" ,                              0, 0xF,  4,   1 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,  12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,  11 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,   7 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,   5 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,   4 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,   3 },
+  { "K8",                     2003, "" ,                              0, 0xF,  2,   1 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,  12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,  11 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,   8 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,   7 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,   5 },
+  { "K8",                     2003, "" ,                              0, 0xF,  1,   4 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0, 0xF },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,  14 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,  12 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,  11 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,   8 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,   7 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,   5 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,   4 },
+  { "K8",                     2003, "" ,                              0, 0xF,  0,   4 },
+
+  /* UNFINISHED
   { "K6",              0, 5,  0, 6,                                           },
   { "K6",              0, 5,  0, 7,                                           }, // *p from sandpile.org
   { "K6",              0, 5,  0,13,                                           }, // *p from sandpile.org
@@ -299,74 +381,7 @@ const CodenameEntry codenames[] = {
   { "K7",              0, 6,  0, 1,                                           },
   { "K7",              0, 6,  0, 2,                                           },
   { "K7"               0, 6,                                                     },
-  {      ???8,     "K8",              0,15,  0, 4,                                                    },
-  { "K8",              0,15,  0, 4,                                                    },
-  { "K8",              0,15,  0, 5,                                                    },
-  { "K8",              0,15,  0, 7,                                                    },
-  { "K8",              0,15,  0, 8,                                                    },
-  { "K8",              0,15,  0,11,                                                    },
-  { "K8",              0,15,  0,12,                                                    },
-  { "K8",              0,15,  0,14,                                                    },
-  { "K8",              0,15,  0,15,                                                    },
-  { "K8",              0,15,  1, 4,                                                   },
-  { "K8",              0,15,  1, 5,                                                   },
-  { "K8",              0,15,  1, 7,                                                   },
-  { "K8",              0,15,  1, 8,                                                   },
-  { "K8",              0,15,  1,11,                                                   },
-  { "K8",              0,15,  1,12,                                                   },
-  { "K8",              0,15,  1,15,                                                   },
-  { "K8",              0,15,  2, 1,                                                   },
-  { "K8",              0,15,  2, 3,                                                   },
-  { "K8",              0,15,  2, 4,                                                   },
-  { "K8",              0,15,  2, 5,                                                   },
-  { "K8",              0,15,  2, 7,                                                   },
-  { "K8",              0,15,  2,11,                                                   },
-  { "K8",              0,15,  2,12,                                                   },
-  { "K8",              0,15,  2,15,                                                   },
-  { "K8",              0,15,  4, 1,                                          },
-  { "K8",              0,15,  4, 3,                                          },
-  { "K8",              0,15,  4, 8,                                          },
-  { "K8",              0,15,  4,11,                                          },
-  { "K8",              0,15,  4,12,                                          },
-  { "K8",              0,15,  4,15,                                          },
-  { "K8",              0,15,  5,13,                                          },
-  { "K8",              0,15,  5,15,                                          },
-  { "K8",              0,15,  6, 8,                                          },
-  { "K8",              0,15,  6,11,                                          },
-  { "K8",              0,15,  6,12,                                          },
-  { "K8",              0,15,  6,15,                                          },
-  { "K8",              0,15,  7,12,                                          },
-  { "K8",              0,15,  7,15,                                          },
-  { "K8",              0,15, 12, 1,                                          },
 
-
-  { "K10",             1,15,  0, 0,                                          }, // sandpile.org
-  { "K10",             1,15,  0, 2,                                          },
-  { "K10",             1,15,  0, 4,                                          },
-  { "K10",             1,15,  0, 5,                                          },
-  { "K10",             1,15,  0, 6,                                          },
-  { "K10",             1,15,  0, 8,                                          },
-  { "K10",             1,15,  0, 9,                                          },
-  { "K10",             1,15,  0,10,                                          },
-  { "Puma 2008",       2,15,                                                 },
-  { "K10",             3,15,                                                 },
-  { "Bobcat",          5,15,                                                 },
-  { "Bulldozer",       6,15,  0, 0,                                          }, // instlatx64 engr sample
-  { "Bulldozer",       6,15,  0, 1,                                          },
-  { "Piledriver",      6,15,  0, 2,                                          },
-  { "Piledriver",      6,15,  1, 0,                                          },
-  { "Piledriver",      6,15,  1, 3,                                          },
-  { "Steamroller",     6,15,  3, 0,                                          },
-  { "Steamroller",     6,15,  3, 8,                                          },
-  { "Steamroller",     6,15,  4, 0,                                          }, // Software Optimization Guide    { 15h) says it has the same inst latencies as    { 6,15),(3,x).
-  { "Excavator",       6,15,  6, 0,                                          }, // undocumented, but instlatx64 samples
-  { "Excavator",       6,15,  6, 5,                                          }, // undocumented, but sample from Alexandros Couloumbis
-  { "Excavator",       6,15,  7, 0,                                          },
-  { "Jaguar",          7,15,  0, 0,                                          },
-  { "Cato",            7,15,  2, 6,                                          }, // only instlatx64 example; engr sample?
-  { "Puma 2014",       7,15,  3, 0,                                          },
-
-
-
+  */
 
 };
