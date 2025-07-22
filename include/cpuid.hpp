@@ -144,8 +144,4 @@ namespace cpuid {
     enumerate_fields( dual_edx.as_struct );
   }
 
-
-
-
-
 }; // namespace cpuid

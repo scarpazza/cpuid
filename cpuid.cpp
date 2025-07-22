@@ -87,7 +87,7 @@ int main() {
       std::cout << "\t Microarch codename : NOT IN THE DATABASE\n";
 
   }
-  
+
   std::cout << "Extended leaf 0 (EAX = 0x8000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0000);
@@ -143,12 +143,9 @@ int main() {
 
   std::cout << "Extended leaf 5 (EAX = 0x8000'0005): L1 cache and TLB identifiers:" << std::endl;
   if (0x8000'0005 <= max_ext_leaf)
-  {
-    const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0005);
-    interpret_fields32_abcd< leaf80000005 >( eax, ebx, ecx, edx );
-  } else
+    std::apply( interpret_fields32_abcd< leaf80000005 >, query_leaf(0x8000'0005) );
+  else
     std::cout << "\t N/A.\n";
-
 
   std::cout << "Leaf 7:\n";
   if ( 7 <= max_leaf.value() )
@@ -163,11 +160,9 @@ int main() {
     }
 
     std::cout << "Leaf 7, subleaf 1:" << std::endl;
-    if ( 1 <= max_leaf7_subleaf) {
-      const auto [eax, ebx, ecx, edx]  = query_leaf(7,1);
-
-      interpret_fields32_abcd< leaf7_subleaf1 >( eax, ebx, ecx, edx );
-    }else
+    if ( 1 <= max_leaf7_subleaf)
+      std::apply( interpret_fields32_abcd< leaf7_subleaf1 >, query_leaf(7,1) );
+    else
       std::cout << "\t N/A.\n";
 
     std::cout << "Leaf 7, subleaf 2:" << std::endl;

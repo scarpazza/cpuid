@@ -15,7 +15,7 @@ Leaf 1:
 		brand_index              	unsigned char	   (8 bits) @0	 =0	 =0x0
 		clflush_line             	unsigned char	   (8 bits) @8	 =8	 =0x8
 		max_logical_id           	unsigned char	   (8 bits) @16	 =8	 =0x8
-		apic_id                  	unsigned char	   (8 bits) @24	 =2	 =0x2
+		apic_id                  	unsigned char	   (8 bits) @24	 =5	 =0x5
 	ecx_features------------------------------------------------
 		sse3                     	unsigned int	bf (1 bit ) @0	 =1	 =0x1
 		pclmulqdq                	unsigned int	bf (1 bit ) @1	 =1	 =0x1
