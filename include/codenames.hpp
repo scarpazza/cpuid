@@ -221,6 +221,71 @@ const CodenameEntry codenames[] = {
 
   // Family 25
 
+  { "Zen 4c",                 2023, "Siena, Bergamo, Stones Dense",   0xA, 0xF, 0xA,   0 },
+  { "Zen 4",                  2023, "Ryzen MI300A",                   0xA, 0xF,   9,   0 },
+  { "Zen 4",                  2023, "Ryzen MI300C",                   0xA, 0xF,   8,   0 },
+
+  { "Zen 4",                  2023, "Phoenix, Hawk Point",            0xA, 0xF,   7, 0xC },
+  { "Zen 4",                  2023, "Phoenix 2, Hawk Point 2",        0xA, 0xF,   7,   8 },
+  { "Zen 4",                  2023, "Phoenix, Hawk Point",            0xA, 0xF,   7,   5 },
+  { "Zen 4",                  2023, "Phoenix",                        0xA, 0xF,   7,   4 },
+  { "Zen 4",                  2023, "?",                              0xA, 0xF,   7,   0 },
+
+  { "Zen 4",                  2023, "Raphael",                        0xA, 0xF,   6,   1, step_set{2} },
+  { "Zen 4",                  2023, "Dragon Range",                   0xA, 0xF,   6,   1 },
+  { "Zen 4",                  2023, "?",                              0xA, 0xf,   6,   0 },
+
+  { "Zen 3",                  2023, "Cezanne, Barcelo",               0xA, 0xF,   5, 0 },
+  { "Zen 3",                  2023, "Rembrandt"                       0xA, 0xF,   4, 4 },
+  { "Zen 3",                  2023, "Rembrandt"                       0xA, 0xF,   4, 0 },
+  { "Zen 3",                  2023, "Badami, Trento, Milan-X",        0xA, 0xF,   3, 1 },
+  { "Zen 3",                  2023, "Trento?",                        0xA, 0xF,   3, 0 },
+
+  { "Zen 3",                  2023, "Vermeer",                        0xA, 0xF,   2, 1 },
+  { "Zen 3",                  2023, "Vermeer?"                        0xA, 0xF,   2, 0 },
+
+  { "Zen 4",                  2023, "Storm Peak, Stones",             0xA, 0xF,   1, 8 },
+  { "Zen 4",                  2023, "Genoa",                          0xA, 0xF,   1, 1 },
+  { "Zen 4",                  2023, "Engineering Sample",             0xA, 0xF,   1, 0 },
+
+
+  { "Zen 3",                  2023, "Chagall",                        0xA, 0xF,   0, 8 },
+  { "Zen 3",                  2023, "Milan",                          0xA, 0xF,   0, 1 },
+  { "Zen 3",                  2023, "Genesis",                        0xA, 0xF,   0, 0 },
+
+  // Family 24
+  { "Zen",                    2018, "Dhyana",                         9,   0xF,   0, 0 },
+
+  // Family 23
+  { "Zen 2",                  2022, "Mendocino",                      8,   0xF, 0xA, 0 },
+  { "Zen 2",                  2022, "Mero",                           8,   0xF,   9, 8 },
+  { "Zen 2",                  2022, "Van Gogh",                       8,   0xF,   9, 0 },
+  { "Zen 2",                  2022, "Project X",                      8,   0xF,   8, 7 },
+  { "Zen 2",                  2022, "Project X?",                     8,   0xF,   8, 0 },
+  { "Zen 2",                  2022, "Matisse",                        8,   0xF,   7, 1 },
+  { "Zen 2",                  2022, "Matisse?",                       8,   0xF,   7, 0 },
+
+  { "Zen 2",                  2022, "Lucienne",                       8,   0xF,   6, 8 },
+  { "Zen 2",                  2022, "Renoir",                         8,   0xF,   6, 0 },
+  { "Zen 2",                  2022, "Cardinal",                       8,   0xF,   4, 7 },
+  { "Zen 2",                  2022, "?",                              8,   0xF,   4, 0 },
+
+  { "Zen 2",                  2022, "Starship, Rome, Castle Peak",    8,   0xF,   3, 1 },
+  { "Zen 2",                  2022, "Starship?, Rome?, Castle Peak?", 8,   0xF,   3, 0 },
+  { "Zen",                    2018, "Dali, Raven 2",                  8,   0xF,   2, 0 },
+  { "Zen+",                   2020, "Banded Kestrel",                 8,   0xF,   1, 8 },
+  { "Zen",                    2018, "Raven Ridge, Raven 1, Great Horned Owl", 8, 0xF,  1, 1 },
+  { "Zen",                    2018, "Raven?",                         8,   0xF,   1, 0 },
+
+  { "Zen+",                   2018, "?",                              8,   0xF,   0, 8 },
+  { "Zen",                    2018, "Naples, Summit Ridge, Whitehaven, Snowy Owl", 8, 0xF,  0, 1 },
+  { "Zen",                    2018, "?",                              8,   0xF,   0, 0 },
+
+
+
+
+
+
   { "Am486"                 0, 4,  0, 3, },
   { "Am486"            0, 4,  0, 7,                                             },
   { "Am486"            0, 4,  0, 8,                                             },
@@ -301,34 +366,6 @@ const CodenameEntry codenames[] = {
   { "Cato",            7,15,  2, 6,                                          }, // only instlatx64 example; engr sample?
   { "Puma 2014",       7,15,  3, 0,                                          },
 
-  { "Zen",             8,15,  0, 0,                                          },
-  { "Zen+",            8,15,  0, 8,                                          },
-  { "Zen",             8,15,  1, 0,                                          }, // found only on en.wikichip.org & instlatx64 examples
-  { "Zen+",            8,15,  1, 8,                                          },
-  { "Zen",             8,15,  2, 0,                                          },
-  { "Zen 2",           8,15,  3, 0,                                         },  // found only on en.wikichip.org
-  { "Zen 2",           8,15,  4, 0,                                         },  // only instlatx64 example; engr sample?
-  { "Zen 2",           8,15,  6, 0,                                         },
-  { "Zen 2",           8,15,  6, 8,                                         },  // undocumented, but instlatx64 samples
-  { "Zen 2",           8,15,  7, 0,                                         },  // undocumented, but samples from Steven Noonan
-  { "Zen 2",           8,15,  8, 0,                                         },  // undocumented, but sample via instlatx64
-  { "Zen 2",           8,15,  9, 0,                                         },  // undocumented, but sample via instlatx64 from @patrickschur_
-  { "Zen 2",           8,15,  9, 8,                                         },  // undocumented, but sample via instlatx64 from @zimogorets
-  { "Zen 2",           8,15, 10, 0,                                         },  // sample via instlatx64 from @ExecuFix
-  { "Zen 3",          10,15,  0, 0,                                              },
-  { "Zen 3",          10,15,  0, 8,                                              },  // undocumented, but sample via instlatx64 from @ExecuFix
-  { "Zen 4",          10,15,  1, 0,                                             },
-  { "Zen 4",          10,15,  1, 8,                                              },  // undocumented, but sample via instlatx64 from @patrickschur_
-  { "Zen 3",          10,15,  2, 0,                                              },
-  { "Zen 3",          10,15,  3, 0,                                              },  // undocumented, but sample via instlatx64 from @patrickschur_
-  { "Zen 3",          10,15,  4, 0,                                             },  // undocumented, but instlatx64 sample
-  { "Zen 3",          10,15,  5, 0,                                              },
-  { "Zen 4",          10,15,  6, 0,                                             },  // undocumented, but instlatx64 sample
-  { "Zen 4",          10,15,  7, 0,                                              },  // undocumented, but engr sample via instlatx64 from bakerlab.org    { 6220795)
-  { "Zen 4",          10,15,  7, 8,                                              },  // Coreboot*
-  { "Zen 4",          10,15,  8, 0,                                             },  // undocumented, but LKML: https://lkml.org/lkml/2023/7/21/835 from AMD's Yazen Ghannam
-  { "Zen 4",          10,15,  9, 0,                                             },  // undocumented, but LKML: https://lkml.org/lkml/2023/7/21/835 from AMD's Yazen Ghannam
-  { "Zen 4c",         10,15, 10, 0,                                             },
 
 
 
