@@ -377,10 +377,10 @@ const CodenameEntry codenames[] = {
   { "K6",              0, 5,  0, 6,                                           },
   { "K6",              0, 5,  0, 7,                                           }, // *p from sandpile.org
   { "K6",              0, 5,  0,13,                                           }, // *p from sandpile.org
-  { "K6"               0, 5,                                                   },
+  { "K6"               0, 5,                                                  },
   { "K7",              0, 6,  0, 1,                                           },
   { "K7",              0, 6,  0, 2,                                           },
-  { "K7"               0, 6,                                                     },
+  { "K7"               0, 6,                                                  },
 
   */
 
