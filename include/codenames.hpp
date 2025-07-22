@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <concepts>
 #include <string_view>
 #include <set>
 
@@ -393,6 +394,35 @@ const CodenameEntry codenames[] = {
 };
 
 
+  /* generic equality operator, intended to match a decomposed signature
+     (like cpuid::leaf1::eax_features) and an entry in the codename table;
+
+     It performs a member-by-member comparison with the exception of steppings:
+     - if the steppings set is empty, than any stepping in the signature will match;
+     - if steppings is non-empty, then the signature stepping must be in the set.
+
+   */
+
+  template<typename T>
+  concept has_family_model = requires(T a) {
+    { a.model           } -> std::convertible_to<unsigned>;
+    { a.extended_model  } -> std::convertible_to<unsigned>;
+    { a.family          } -> std::convertible_to<unsigned>;
+    { a.extended_family } -> std::convertible_to<unsigned>;
+  };
+
+
+  template <typename Needle, typename Haystack>
+  requires has_family_model<Needle> and has_family_model<Haystack>
+  bool operator==(const Needle& sig, const Haystack& entry) {
+    return (sig.model           == entry.model           and
+	    sig.extended_model  == entry.extended_model  and
+	    sig.family          == entry.family          and
+	    sig.extended_family == entry.extended_family and
+	    ( entry.steppings.empty() or entry.steppings.contains( sig.stepping ) ) );
+  }
+
+
 std::optional<CodenameEntry> find_codename ( const uint32_t eax )
 {
   const SchizoReg32< cpuid::leaf1::eax_features > dual_eax{eax};
@@ -400,12 +430,8 @@ std::optional<CodenameEntry> find_codename ( const uint32_t eax )
   const auto sig = dual_eax.as_struct;
 
   for (const auto entry: codenames)
-      if (sig.model  == entry.model &&
-	  sig.family == entry.family &&
-	  sig.extended_model == entry.extended_model &&
-	  sig.extended_family == entry.extended_family &&
-	  ( entry.steppings.empty() or entry.steppings.contains( sig.stepping ) ) )
-	return std::optional<CodenameEntry>{entry};
+    if (sig == entry)
+      return std::optional<CodenameEntry>{entry};
 
   return std::optional<CodenameEntry>{};
 }

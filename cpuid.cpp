@@ -71,6 +71,23 @@ int main() {
     std::cout << "Manufacturer: '" << manufacturer << "'" << std::endl;
   }
 
+  if ( 1 <= max_leaf.value() )
+  {
+    std::cout << "Leaf 1:" << std::endl;
+    const auto [eax, ebx, ecx, edx]  = query_leaf(1);
+
+    interpret_fields32_abcd< leaf1 >( eax, ebx, ecx, edx );
+
+    const auto e = find_codename( eax );
+    if (e.has_value())
+      std::cout << "\t Microarch codename : " << e->microarch
+		<< "\n\t Introduced         : " << e->year
+		<< "\n\t Core codename      : " << e->core << "\n";
+    else
+      std::cout << "\t Microarch codename : NOT IN THE DATABASE\n";
+
+  }
+  
   std::cout << "Extended leaf 0 (EAX = 0x8000'0000):" << std::endl;
   {
     const auto [eax, ebx, ecx, edx]  = query_leaf(0x8000'0000);
@@ -89,24 +106,6 @@ int main() {
     }
     else
       std::cout << "\t No hypervisor." << std::endl;
-  }
-
-
-  if ( 1 <= max_leaf.value() )
-  {
-    std::cout << "Leaf 1:" << std::endl;
-    const auto [eax, ebx, ecx, edx]  = query_leaf(1);
-
-    interpret_fields32_abcd< leaf1 >( eax, ebx, ecx, edx );
-
-    const auto e = find_codename( eax );
-    if (e.has_value())
-      std::cout << "\t Microarch codename : " << e->microarch
-		<< "\n\t Introduced         : " << e->year
-		<< "\n\t Core codename      : " << e->core << "\n";
-    else
-      std::cout << "\t Microarch codename : NOT IN THE DATABASE\n";
-
   }
 
   std::cout << "Extended leaf 1 (EAX = 0x8000'0001):" << std::endl;
