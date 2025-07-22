@@ -86,6 +86,9 @@ Leaf 1:
 		tm                       	unsigned int	bf (1 bit ) @29	 =0	 =0x0
 		ia64                     	unsigned int	bf (1 bit ) @30	 =0	 =0x0
 		pbe                      	unsigned int	bf (1 bit ) @31	 =0	 =0x0
+	 Microarch codename : Coffee Lake
+	 Introduced         : 2017
+	 Core codename      : CFL-H, CFL-S
 Extended leaf 1 (EAX = 0x8000'0001):
 	ecx_features------------------------------------------------
 		lahf_lm                  	unsigned int	bf (1 bit ) @0	 =1	 =0x1

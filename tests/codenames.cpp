@@ -28,36 +28,6 @@ const auto query_leaf(const uint32_t leaf,
   return std::make_tuple( eax, ebx, ecx, edx );
 }
 
-std::optional<CodenameEntry> find_codename ( const uint32_t eax )
-{
-  const SchizoReg32< cpuid::leaf1::eax_features > dual_eax{eax};
-
-  const auto sig = dual_eax.as_struct;
-
-
-  std::cout << "Needle: "
-	    << std::hex
-	    << +sig.extended_family << ","
-    	    << +sig.family << ","
-	    << +sig.extended_model << ","
-	    << +sig.model
- 	    << "\n";
-
-
-  for (const auto entry: codenames)
-    if (sig.model == entry.model &&
-	sig.family == entry.family &&
-	sig.extended_model == entry.extended_model &&
-	sig.extended_family == entry.extended_family &&
-	( entry.steppings.empty() or
-	  entry.steppings.contains( sig.stepping )
-	  )
-	)
-      return std::optional<CodenameEntry>{entry};
-
-  return std::optional<CodenameEntry>{};
-}
-
 
 
 int main()

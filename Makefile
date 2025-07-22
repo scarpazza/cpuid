@@ -10,10 +10,6 @@ LDFLAGS=-Wl,-rpath,$(HOME)/repos/clang-p2996/build-llvm/lib/x86_64-unknown-linux
 
 HEADERS := $(wildcard include/*.hpp)
 
-test.exe: test.cpp
-	clang++ -std=c++23 $< -o $@
-	./$@
-
 all: cpuid.exe samples
 
 %.exe: %.o

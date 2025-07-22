@@ -4,11 +4,13 @@
 #include <string_view>
 #include <set>
 
+#include "leaf_EAX1.hpp"
 
 using step_set = std::set<uint8_t>;
 
 const step_set empty;
 
+namespace cpuid {
 
 struct CodenameEntry {
   std::string_view  microarch;
@@ -20,6 +22,7 @@ struct CodenameEntry {
   uint8_t           model;
   step_set          steppings; // empty steppings set means "all steppings match"
 };
+
 
 
 /* ATTENTION - entries are matched in sequential order.
@@ -203,17 +206,17 @@ const CodenameEntry codenames[] = {
   { "Zen 6",                  2026, "Venice",                         0xB, 0xF, 0x9, 0 },
   { "Zen 6?",                 2022, "?",                              0xb, 0xf,   5, 8 },
   { "Zen 6",                  2026, "Weisshorn",                      0xB, 0xF, 0x5, 0 },
-  { "Zen 5",                  2022, "Strix Halo?, Sarlac?"            0xB, 0xF,   7, 8 },
-  { "Zen 5c?",                2022, "Strix Halo, Sarlac"              0xB, 0xF,   7, 0 },
+  { "Zen 5",                  2022, "Strix Halo?, Sarlac?",           0xB, 0xF,   7, 8 },
+  { "Zen 5c?",                2022, "Strix Halo, Sarlac",             0xB, 0xF,   7, 0 },
   { "Zen 5",                  2022, "Krackan Point?",                 0xB, 0xF,   6, 8 },
   { "Zen 5/5c",               2022, "Krackan Point",                  0xB, 0xF,   6, 0 },
   { "Zen 5",                  2022, "Granite Ridge?",                 0xB, 0xF,   4, 8 },
   { "Zen 5",                  2022, "Granite Ridge",                  0xB, 0xF,   4, 0 },
   { "Zen 5c",                 2022, "Strix Halo, Strix Point 3",      0xB, 0xF,   3, 8 },
-  { "Zen 5"                   2022, "Strix Point 2",                  0xB, 0xF,   3, 0 },
+  { "Zen 5",                  2022, "Strix Point 2",                  0xB, 0xF,   3, 0 },
   { "Zen 5",                  2022, "Strix Point 1?",                 0xB, 0xF,   2, 0 },
   { "Zen 5",                  2022, "Strix Point 1",                  0xB, 0xF,   2, 8 },
-  { "Zen 5c",                 2022, "Turin Dense?, Breithorn Dense?"  0xB, 0xF,   1, 8 },
+  { "Zen 5c",                 2022, "Turin Dense?, Breithorn Dense?", 0xB, 0xF,   1, 8 },
   { "Zen 5c",                 2022, "Turin Dense, Breithorn Dense",   0xB, 0xB,   1, 0 },
   { "Zen 5",                  2022, "Turin?, Breithorn?",             0xB, 0xF,   0, 8 },
   { "Zen 5",                  2022, "Turin, Breithorn",               0xB, 0xF,   0, 0 },
@@ -236,13 +239,13 @@ const CodenameEntry codenames[] = {
   { "Zen 4",                  2023, "?",                              0xA, 0xf,   6,   0 },
 
   { "Zen 3",                  2023, "Cezanne, Barcelo",               0xA, 0xF,   5, 0 },
-  { "Zen 3",                  2023, "Rembrandt"                       0xA, 0xF,   4, 4 },
-  { "Zen 3",                  2023, "Rembrandt"                       0xA, 0xF,   4, 0 },
+  { "Zen 3",                  2023, "Rembrandt",                      0xA, 0xF,   4, 4 },
+  { "Zen 3",                  2023, "Rembrandt",                      0xA, 0xF,   4, 0 },
   { "Zen 3",                  2023, "Badami, Trento, Milan-X",        0xA, 0xF,   3, 1 },
   { "Zen 3",                  2023, "Trento?",                        0xA, 0xF,   3, 0 },
 
   { "Zen 3",                  2023, "Vermeer",                        0xA, 0xF,   2, 1 },
-  { "Zen 3",                  2023, "Vermeer?"                        0xA, 0xF,   2, 0 },
+  { "Zen 3",                  2023, "Vermeer?",                       0xA, 0xF,   2, 0 },
 
   { "Zen 4",                  2023, "Storm Peak, Stones",             0xA, 0xF,   1, 8 },
   { "Zen 4",                  2023, "Genoa",                          0xA, 0xF,   1, 1 },
@@ -288,7 +291,7 @@ const CodenameEntry codenames[] = {
 
   // Family 21
   { "Excavator",              2015, "Stoney Ridge",                   6, 0xF,  7, 0 },
-  { "Excavator",              2015, "Bristol Ridge"                   6, 0xF,  6, 5 },
+  { "Excavator",              2015, "Bristol Ridge",                  6, 0xF,  6, 5 },
   { "Excavator",              2015, "Carrizo",                        6, 0xF,  6, 0 },
 
   { "Steamroller",            2015, "?",                              6, 0xF,  4, 0 },
@@ -328,7 +331,7 @@ const CodenameEntry codenames[] = {
   { "K10",                    2007, "Lisbon, Instabul",               1, 0xF, 0,   8 },
   { "K10",                    2007, "Caspian, Geneva, ...",           1, 0xF, 0,   6 },
   { "K10",                    2007, "",                               1, 0xF, 0,   5 },
-  { "K10",                    2007, "Shanghai, Suzuka"                1, 0xF, 0,   4 },
+  { "K10",                    2007, "Shanghai, Suzuka",               1, 0xF, 0,   4 },
   { "K10",                    2007, "Barcelona, Budapest, Agena, Toliman, Kuma", 1, 0xF,  0, 2 },
 
 
@@ -384,4 +387,28 @@ const CodenameEntry codenames[] = {
 
   */
 
+
+
+
 };
+
+
+std::optional<CodenameEntry> find_codename ( const uint32_t eax )
+{
+  const SchizoReg32< cpuid::leaf1::eax_features > dual_eax{eax};
+
+  const auto sig = dual_eax.as_struct;
+
+  for (const auto entry: codenames)
+      if (sig.model  == entry.model &&
+	  sig.family == entry.family &&
+	  sig.extended_model == entry.extended_model &&
+	  sig.extended_family == entry.extended_family &&
+	  ( entry.steppings.empty() or entry.steppings.contains( sig.stepping ) ) )
+	return std::optional<CodenameEntry>{entry};
+
+  return std::optional<CodenameEntry>{};
+}
+
+
+} // namespace cpuid
