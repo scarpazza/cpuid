@@ -185,7 +185,9 @@ const CodenameEntry codenames[] = {
     { "P5",                   1993, "P55C Mobile",                    0, 5, 0x0, 0x8 },
     { "P5",                   1993, "P55C Mobile",                    0, 5, 0x0, 0x7 },
     { "P5",                   1993, "P55C Pentium MMX",               0, 5, 0x0, 0x4 },
-    { "P5",                   1993, "P54CS Pentium 75",               0, 5, 0x0, 0x2 },
+    { "P5",                   1993, "?",                              0, 5, 0x0, 0x3 }, // Allen
+
+    { "P5 MMX ",              1993, "P54CS Pentium 75",               0, 5, 0x0, 0x2 },
     { "P5",                   1993, "Pentium P54CQS",                 0, 5, 0x0, 0x1 },
     { "P5",                   1993, "P5 A-step",                      0, 5, 0x0, 0x0 },
 
@@ -204,5 +206,138 @@ const CodenameEntry codenames[] = {
 
 
 
-    
+    // AMD
+
+
+
+   FM  ( 0, 4,  0, 3,         *u = "Am486");
+   FM  ( 0, 4,  0, 7,         *u = "Am486");
+   FM  ( 0, 4,  0, 8,         *u = "Am486");
+   FM  ( 0, 4,  0, 9,         *u = "Am486");
+   F   ( 0, 4,                *u = "Am5x86");
+   FM  ( 0, 5,  0, 6,         *u = "K6",          *p = ".30um");
+   FM  ( 0, 5,  0, 7,         *u = "K6",          *p = ".25um"); // *p from sandpile.org
+   FM  ( 0, 5,  0,13,         *u = "K6",          *p = ".18um"); // *p from sandpile.org
+   F   ( 0, 5,                *u = "K6");
+   FM  ( 0, 6,  0, 1,         *u = "K7",          *p = ".25um");
+   FM  ( 0, 6,  0, 2,         *u = "K7",          *p = ".18um");
+   F   ( 0, 6,                *u = "K7");
+   FMS ( 0,15,  0, 4,  8,     *u = "K8",          *p = "754-pin, .13um");
+   FM  ( 0,15,  0, 4,         *u = "K8",          *p = "940-pin, .13um");
+   FM  ( 0,15,  0, 5,         *u = "K8",          *p = "940-pin, .13um");
+   FM  ( 0,15,  0, 7,         *u = "K8",          *p = "939-pin, .13um");
+   FM  ( 0,15,  0, 8,         *u = "K8",          *p = "754-pin, .13um");
+   FM  ( 0,15,  0,11,         *u = "K8",          *p = "939-pin, .13um");
+   FM  ( 0,15,  0,12,         *u = "K8",          *p = "754-pin, .13um");
+   FM  ( 0,15,  0,14,         *u = "K8",          *p = "754-pin, .13um");
+   FM  ( 0,15,  0,15,         *u = "K8",          *p = "939-pin, .13um");
+   FM  ( 0,15,  1, 4,         *u = "K8",          *p = "754-pin, 90nm");
+   FM  ( 0,15,  1, 5,         *u = "K8",          *p = "940-pin, 90nm");
+   FM  ( 0,15,  1, 7,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  1, 8,         *u = "K8",          *p = "754-pin, 90nm");
+   FM  ( 0,15,  1,11,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  1,12,         *u = "K8",          *p = "754-pin, 90nm");
+   FM  ( 0,15,  1,15,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  2, 1,         *u = "K8",          *p = "940-pin, 90nm");
+   FM  ( 0,15,  2, 3,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  2, 4,         *u = "K8",          *p = "754-pin, 90nm");
+   FM  ( 0,15,  2, 5,         *u = "K8",          *p = "940-pin, 90nm");
+   FM  ( 0,15,  2, 7,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  2,11,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  2,12,         *u = "K8",          *p = "754-pin, 90nm");
+   FM  ( 0,15,  2,15,         *u = "K8",          *p = "939-pin, 90nm");
+   FM  ( 0,15,  4, 1,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  4, 3,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  4, 8,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  4,11,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  4,12,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  4,15,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  5,13,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  5,15,         *u = "K8",          *p = "90nm");
+   FM  ( 0,15,  6, 8,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15,  6,11,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15,  6,12,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15,  6,15,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15,  7,12,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15,  7,15,         *u = "K8",          *p = "65nm");
+   FM  ( 0,15, 12, 1,         *u = "K8",          *p = "90nm");
+
+
+     FM  ( 1,15,  0, 0,         *u = "K10",         *p = "65nm"); // sandpile.org
+   FM  ( 1,15,  0, 2,         *u = "K10",         *p = "65nm");
+   FM  ( 1,15,  0, 4,         *u = "K10",         *p = "45nm");
+   FM  ( 1,15,  0, 5,         *u = "K10",         *p = "45nm");
+   FM  ( 1,15,  0, 6,         *u = "K10",         *p = "45nm");
+   FM  ( 1,15,  0, 8,         *u = "K10",         *p = "45nm");
+   FM  ( 1,15,  0, 9,         *u = "K10",         *p = "45nm");
+   FM  ( 1,15,  0,10,         *u = "K10",         *p = "45nm");
+   F   ( 2,15,                *u = "Puma 2008",   *p = "65nm");
+   F   ( 3,15,                *u = "K10",         *p = "32nm");
+   F   ( 5,15,                *u = "Bobcat",      *p = "40nm");
+   FM  ( 6,15,  0, 0,         *u = "Bulldozer",   *p = "32nm"); // instlatx64 engr sample
+   FM  ( 6,15,  0, 1,         *u = "Bulldozer",   *p = "32nm");
+   FM  ( 6,15,  0, 2,         *u = "Piledriver",  *p = "32nm");
+   FM  ( 6,15,  1, 0,         *u = "Piledriver",  *p = "32nm");
+   FM  ( 6,15,  1, 3,         *u = "Piledriver",  *p = "32nm");
+   FM  ( 6,15,  3, 0,         *u = "Steamroller", *p = "28nm");
+   FM  ( 6,15,  3, 8,         *u = "Steamroller", *p = "28nm");
+   FM  ( 6,15,  4, 0,         *u = "Steamroller", *p = "28nm"); // Software Optimization Guide (15h) says it has the same inst latencies as (6,15),(3,x).
+   FM  ( 6,15,  6, 0,         *u = "Excavator",   *p = "28nm"); // undocumented, but instlatx64 samples
+   FM  ( 6,15,  6, 5,         *u = "Excavator",   *p = "28nm"); // undocumented, but sample from Alexandros Couloumbis
+   FM  ( 6,15,  7, 0,         *u = "Excavator",   *p = "28nm");
+   FM  ( 7,15,  0, 0,         *u = "Jaguar",      *p = "28nm");
+   FM  ( 7,15,  2, 6,         *u = "Cato",        *p = "28nm"); // only instlatx64 example; engr sample?
+   FM  ( 7,15,  3, 0,         *u = "Puma 2014",   *p = "28nm");
+   // In Zen-based CPUs, the model uses only the extended model and the
+   // high-order bit of the model.  The low-order 3 bits of the model are part
+   // of the stepping.
+   FMm ( 8,15,  0, 0,         *u = "Zen",         *p = "14nm");
+   FMm ( 8,15,  0, 8,         *u = "Zen+",        *p = "12nm");
+   FMm ( 8,15,  1, 0,         *u = "Zen",         *p = "14nm"); // found only on en.wikichip.org & instlatx64 examples
+   FMm ( 8,15,  1, 8,         *u = "Zen+",        *p = "12nm");
+   FMm ( 8,15,  2, 0,         *u = "Zen",         *p = "14nm");
+   FMm ( 8,15,  3, 0,         *u = "Zen 2",       *p = "7nm");  // found only on en.wikichip.org
+   FMm ( 8,15,  4, 0,         *u = "Zen 2",       *p = "7nm");  // only instlatx64 example; engr sample?
+   FMm ( 8,15,  6, 0,         *u = "Zen 2",       *p = "7nm");
+   FMm ( 8,15,  6, 8,         *u = "Zen 2",       *p = "7nm");  // undocumented, but instlatx64 samples
+   FMm ( 8,15,  7, 0,         *u = "Zen 2",       *p = "7nm");  // undocumented, but samples from Steven Noonan
+   FMm ( 8,15,  8, 0,         *u = "Zen 2",       *p = "7nm");  // undocumented, but sample via instlatx64
+   FMm ( 8,15,  9, 0,         *u = "Zen 2",       *p = "7nm");  // undocumented, but sample via instlatx64 from @patrickschur_
+   FMm ( 8,15,  9, 8,         *u = "Zen 2",       *p = "7nm");  // undocumented, but sample via instlatx64 from @zimogorets
+   FMm ( 8,15, 10, 0,         *u = "Zen 2",       *p = "7nm");  // sample via instlatx64 from @ExecuFix
+   FMm (10,15,  0, 0,         *u = "Zen 3",       *p = "TSMC 7nm");
+   FMm (10,15,  0, 8,         *u = "Zen 3",       *p = "TSMC 7nm");  // undocumented, but sample via instlatx64 from @ExecuFix
+   FMm (10,15,  1, 0,         *u = "Zen 4",       *p = "TSMC N5");
+   FMm (10,15,  1, 8,         *u = "Zen 4",       *p = "TSMC 5FF");  // undocumented, but sample via instlatx64 from @patrickschur_
+   FMm (10,15,  2, 0,         *u = "Zen 3",       *p = "TSMC 7FF");
+   FMm (10,15,  3, 0,         *u = "Zen 3",       *p = "TSMC N5P");  // undocumented, but sample via instlatx64 from @patrickschur_
+   FMm (10,15,  4, 0,         *u = "Zen 3",       *p = "TSMC N6");  // undocumented, but instlatx64 sample
+   FMm (10,15,  5, 0,         *u = "Zen 3",       *p = "TSMC 7nm");
+   FMm (10,15,  6, 0,         *u = "Zen 4",       *p = "TSMC N5");  // undocumented, but instlatx64 sample
+   FMm (10,15,  7, 0,         *u = "Zen 4",       *p = "TSMC 4nm");  // undocumented, but engr sample via instlatx64 from bakerlab.org (6220795)
+   FMm (10,15,  7, 8,         *u = "Zen 4",       *p = "TSMC 4nm");  // Coreboot*
+   FMm (10,15,  8, 0,         *u = "Zen 4",       *p = "TSMC N5");  // undocumented, but LKML: https://lkml.org/lkml/2023/7/21/835 from AMD's Yazen Ghannam
+   FMm (10,15,  9, 0,         *u = "Zen 4",       *p = "TSMC N5");  // undocumented, but LKML: https://lkml.org/lkml/2023/7/21/835 from AMD's Yazen Ghannam
+   FMm (10,15, 10, 0,         *u = "Zen 4c",      *p = "TSMC N5");
+
+
+
+
+   FMm (11,15,  0, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // LX* & tangentially documented: 58088 AMD 1Ah Models 00h-0Fh and Models 10h-1Fh ACPI v6.5 Porting Guide
+   FMm (11,15,  0, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  1, 0,         *u = "Zen 5c",      *p = "TSMC N3");  // tangentially documented: 58088 AMD 1Ah Models 00h-0Fh and Models 10h-1Fh ACPI v6.5 Porting Guide
+   FMm (11,15,  1, 8,         *u = "Zen 5c",      *p = "TSMC N3");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  2, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but engr sample via instlatx64 from milkyway.cs.rpi.edu (996435)
+   FMm (11,15,  2, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  3, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  3, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  4, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LX* & engr sample via instlatx64 from einsteinathome.org (13142934)
+   FMm (11,15,  4, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  5, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  5, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  6, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but engr sample via instlatx64 from @kepler_l2
+   FMm (11,15,  6, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+   FMm (11,15,  7, 0,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LX* & engr sample via instlatx64 from @kepler_l2
+   FMm (11,15,  7, 8,         *u = "Zen 5",       *p = "TSMC N4P");  // undocumented, but LLVM patch from AMD's Ganesh Gopalasubramanian
+
 };
